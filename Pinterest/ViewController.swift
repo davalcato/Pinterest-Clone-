@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         let loginBtn = UIButton()
         loginBtn.translatesAutoresizingMaskIntoConstraints = false
         loginBtn.setTitle("Log In", for: .normal)
-        loginBtn.backgroundColor = UIColor.white
-        loginBtn.setTitleColor(UIColor.gray, for: .normal)
+        loginBtn.backgroundColor = UIColor.lightGray
+        loginBtn.setTitleColor(UIColor.white, for: .normal)
         loginBtn.contentEdgeInsets = UIEdgeInsets(
             top: 13,
             left: 0,
@@ -33,10 +33,15 @@ class ViewController: UIViewController {
         
         // loginBtn constraits
         loginBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                         constant: 35).isActive = true
+                                         constant: -35).isActive = true
+        loginBtn.leftAnchor.constraint(equalTo: view.leftAnchor,
+                                       constant: 20).isActive = true
+        loginBtn.rightAnchor.constraint(equalTo: view.rightAnchor,
+                                       constant: -20).isActive = true
+        
         loginBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginBtn.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        loginBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        loginBtn.heightAnchor.constraint(equalToConstant: 55).isActive = true
+      
         
     }
 
