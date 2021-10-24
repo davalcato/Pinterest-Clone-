@@ -14,6 +14,7 @@
 		75595B542725C20600DBB009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75595B522725C20600DBB009 /* LaunchScreen.storyboard */; };
 		75595B5F2725C20600DBB009 /* PinterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B5E2725C20600DBB009 /* PinterestTests.swift */; };
 		75595B692725C20600DBB009 /* PinterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B682725C20600DBB009 /* PinterestUITests.swift */; };
+		755F8C9D2725E60A00398ADD /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 755F8C9C2725E60A00398ADD /* Assets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,15 @@
 		75595B5E2725C20600DBB009 /* PinterestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestTests.swift; sourceTree = "<group>"; };
 		75595B642725C20600DBB009 /* PinterestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinterestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75595B682725C20600DBB009 /* PinterestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestUITests.swift; sourceTree = "<group>"; };
+		755F8C9C2725E60A00398ADD /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		755F8CA02725E62B00398ADD /* CCZoomAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCZoomAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		755F8CA12725E62B00398ADD /* CCZoomTransitionVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCZoomTransitionVCExtension.swift; sourceTree = "<group>"; };
+		755F8CA22725E62B00398ADD /* CCSwipBackPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSwipBackPresentationController.swift; sourceTree = "<group>"; };
+		755F8CA32725E62B00398ADD /* CCZoomTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCZoomTransitioner.swift; sourceTree = "<group>"; };
+		755F8CA52725E62B00398ADD /* GIFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageView.swift; sourceTree = "<group>"; };
+		755F8CA72725E62B00398ADD /* PostProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProvider.swift; sourceTree = "<group>"; };
+		755F8CA82725E62B00398ADD /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
+		755F8CAA2725E62B00398ADD /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +105,8 @@
 		75595B462725C20100DBB009 /* Pinterest */ = {
 			isa = PBXGroup;
 			children = (
+				755F8C9E2725E62B00398ADD /* Helpers */,
+				755F8C9C2725E60A00398ADD /* Assets */,
 				75595B472725C20100DBB009 /* AppDelegate.swift */,
 				75595B492725C20100DBB009 /* SceneDelegate.swift */,
 				75595B4B2725C20100DBB009 /* ViewController.swift */,
@@ -119,6 +131,53 @@
 				75595B682725C20600DBB009 /* PinterestUITests.swift */,
 			);
 			path = PinterestUITests;
+			sourceTree = "<group>";
+		};
+		755F8C9E2725E62B00398ADD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				755F8C9F2725E62B00398ADD /* CCZoomTransition */,
+				755F8CA42725E62B00398ADD /* Subclasses */,
+				755F8CA62725E62B00398ADD /* Etc */,
+				755F8CA82725E62B00398ADD /* giphy.gif */,
+				755F8CA92725E62B00398ADD /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		755F8C9F2725E62B00398ADD /* CCZoomTransition */ = {
+			isa = PBXGroup;
+			children = (
+				755F8CA02725E62B00398ADD /* CCZoomAnimatedTransitioning.swift */,
+				755F8CA12725E62B00398ADD /* CCZoomTransitionVCExtension.swift */,
+				755F8CA22725E62B00398ADD /* CCSwipBackPresentationController.swift */,
+				755F8CA32725E62B00398ADD /* CCZoomTransitioner.swift */,
+			);
+			path = CCZoomTransition;
+			sourceTree = "<group>";
+		};
+		755F8CA42725E62B00398ADD /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				755F8CA52725E62B00398ADD /* GIFImageView.swift */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
+		755F8CA62725E62B00398ADD /* Etc */ = {
+			isa = PBXGroup;
+			children = (
+				755F8CA72725E62B00398ADD /* PostProvider.swift */,
+			);
+			path = Etc;
+			sourceTree = "<group>";
+		};
+		755F8CA92725E62B00398ADD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				755F8CAA2725E62B00398ADD /* UIColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75595B542725C20600DBB009 /* LaunchScreen.storyboard in Resources */,
+				755F8C9D2725E60A00398ADD /* Assets in Resources */,
 				75595B512725C20600DBB009 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
