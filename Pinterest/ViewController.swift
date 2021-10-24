@@ -27,7 +27,66 @@ class ViewController: UIViewController {
         loginBtn.clipsToBounds = true
         
         return loginBtn
+    }()
+    
+    let emailBtn: UIButton = {
+        // loginBtn here
+        let emailBtn = UIButton()
+        emailBtn.translatesAutoresizingMaskIntoConstraints = false
+        emailBtn.setTitle("Log In", for: .normal)
+        emailBtn.backgroundColor = UIColor.lightGray
+        emailBtn.setTitleColor(UIColor.white, for: .normal)
+        emailBtn.contentEdgeInsets = UIEdgeInsets(
+            top: 13,
+            left: 0,
+            bottom: 13,
+            right: 0)
+        emailBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16,
+                                                      weight: .bold)
+        emailBtn.layer.cornerRadius = 15
+        emailBtn.clipsToBounds = true
         
+        return emailBtn
+    }()
+    
+    let facebookBtn: UIButton = {
+        // loginBtn here
+        let facebookBtn = UIButton()
+        facebookBtn.translatesAutoresizingMaskIntoConstraints = false
+        facebookBtn.setTitle("Log In", for: .normal)
+        facebookBtn.backgroundColor = UIColor.lightGray
+        facebookBtn.setTitleColor(UIColor.white, for: .normal)
+        facebookBtn.contentEdgeInsets = UIEdgeInsets(
+            top: 13,
+            left: 0,
+            bottom: 13,
+            right: 0)
+        facebookBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16,
+                                                      weight: .bold)
+        facebookBtn.layer.cornerRadius = 15
+        facebookBtn.clipsToBounds = true
+        
+        return facebookBtn
+    }()
+    
+    let googleBtn: UIButton = {
+        // loginBtn here
+        let googleBtn = UIButton()
+        googleBtn.translatesAutoresizingMaskIntoConstraints = false
+        googleBtn.setTitle("Log In", for: .normal)
+        googleBtn.backgroundColor = UIColor.lightGray
+        googleBtn.setTitleColor(UIColor.white, for: .normal)
+        googleBtn.contentEdgeInsets = UIEdgeInsets(
+            top: 13,
+            left: 0,
+            bottom: 13,
+            right: 0)
+        googleBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16,
+                                                      weight: .bold)
+        googleBtn.layer.cornerRadius = 15
+        googleBtn.clipsToBounds = true
+        
+        return googleBtn
     }()
 
     override func viewDidLoad() {
