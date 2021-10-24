@@ -8,13 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .white
-        
+    
+    let loginBtn: UIButton = {
         // loginBtn here
         let loginBtn = UIButton()
         loginBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -26,11 +21,27 @@ class ViewController: UIViewController {
             left: 0,
             bottom: 13,
             right: 0)
+        loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16,
+                                                      weight: .bold)
         loginBtn.layer.cornerRadius = 15
         loginBtn.clipsToBounds = true
         
-        view.addSubview(loginBtn)
+        return loginBtn
         
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .white
+        
+
+        setupElements()
+    }
+    
+    func setupElements() {
+        view.addSubview(loginBtn)
         // loginBtn constraits
         loginBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor,
                                          constant: -35).isActive = true
@@ -41,7 +52,6 @@ class ViewController: UIViewController {
         
         loginBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginBtn.heightAnchor.constraint(equalToConstant: 55).isActive = true
-      
         
     }
 
