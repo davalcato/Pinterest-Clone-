@@ -9,6 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let logoImgView: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "logo"))
+        
+        return iv
+        
+    }()
+    
+    let welcomeLbl: UILabel = {
+        let lbl = UILabel()
+        
+        return lbl
+    }()
+    
     let loginBtn: UIButton = {
         // loginBtn here
         let loginBtn = UIButton()
