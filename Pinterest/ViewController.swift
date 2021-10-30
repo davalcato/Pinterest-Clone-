@@ -112,9 +112,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         view.backgroundColor = .white
-        
 
         setupElements()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        btnStackView.heightAnchor.constraint(equalToConstant: (loginBtn.frame.height * 3) + 10).isActive = true
     }
     
     func setupElements() {
