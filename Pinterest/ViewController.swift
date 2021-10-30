@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     
     let welcomeLbl: UILabel = {
         let lbl = UILabel()
+        lbl.text = "Welcome to Pinterest"
+        lbl.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        lbl.textColor = UIColor.gray
+        lbl.textAlignment = .center
         
         return lbl
     }()
@@ -138,6 +142,9 @@ class ViewController: UIViewController {
     func setupElements() {
         view.addSubview(loginBtn)
         view.addSubview(btnStackView)
+        view.addSubview(welcomeLbl)
+        view.addSubview(logoImgView)
+        
         
         // loginBtn constraits
         loginBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor,
@@ -161,6 +168,31 @@ class ViewController: UIViewController {
             rightConstant: 20,
             widthConstant: 0,
             heightConstant: 0)
+        
+        welcomeLbl.constraint(
+            top: nil,
+            left: view.leftAnchor,
+            bottom: btnStackView.topAnchor,
+            right: view.rightAnchor,
+            topConstant: 0,
+            leftConstant: 20,
+            bottomConstant: 30,
+            rightConstant: 20,
+            widthConstant: 0,
+            heightConstant: 0)
+        
+        logoImgView.constraint(
+            top: nil,
+            left: nil,
+            bottom: welcomeLbl.topAnchor,
+            right: nil,
+            topConstant: 0,
+            leftConstant: 0,
+            bottomConstant: 10,
+            rightConstant: 0,
+            widthConstant: 140,
+            heightConstant: 140)
+        logoImgView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
     }
 }
