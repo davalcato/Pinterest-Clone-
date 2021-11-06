@@ -6,11 +6,51 @@
 //
 
 import UIKit
+import SwiftGifOrigin
 
-class ViewController: UIViewController {
+class GradientLayer: CAGradientLayer {
+    var gradient: (start: CGPoint, end: CGPoint)? {
+        didSet {
+            startPoint = gradient?.start ?? CGPoint.zero
+            endPoint = gradient?.end ?? CGPoint.zero
+        }
+    }
+}
+
+class GradientView: UIView {
+    override public class var layerClass: Swift.AnyClass {
+        return GradientLayer.self
+    }
+}
+
+protocol GradientProvider {
+    associatedtype GradientViewType
+}
+
+extension GradientProvider where Self: UIView {
+    var gradientLayer: Self.GradientViewType {
+        return layer as! Self.GradientViewType
+    }
+    
+}
+
+extension UIView: GradientProvider {
+    typealias GradientViewType = GradientLayer
+    
+}
+
+class IntroViewController: UIViewController {
+    
+//    let headerImgView: UIImageView = {
+//        let iv = UIImageView(image: UIImage.gifImageWithName("giphy"))
+//
+//        return iv
+//
+//    }()
     
     let logoImgView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "logo"))
+        iv.layer.zPosition = 1
         
         return iv
         
@@ -144,7 +184,7 @@ class ViewController: UIViewController {
         view.addSubview(btnStackView)
         view.addSubview(welcomeLbl)
         view.addSubview(logoImgView)
-        
+//        view.addSubview(headerImgView)
         
         // loginBtn constraits
         loginBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor,
@@ -194,6 +234,18 @@ class ViewController: UIViewController {
             heightConstant: 140)
         logoImgView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
+//        headerImgView.constraint(
+//            top: nil,
+//            left: view.leftAnchor,
+//            bottom: welcomeLbl.topAnchor,
+//            right: view.rightAnchor,
+//            topConstant: 0,
+//            leftConstant: 0,
+//            bottomConstant: 0,
+//            rightConstant: 0,
+//            widthConstant: 0,
+//            heightConstant: 0)
+        
     }
 }
 
@@ -230,4 +282,7 @@ extension UIView {
         constraints.forEach({$0.isActive = true})
     }
 }
+
+
+
 
