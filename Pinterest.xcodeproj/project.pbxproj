@@ -11,13 +11,14 @@
 		14D26546C0C1CF3C1B3A53C4 /* Pods_Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8719A6C1A0F293E76CA283 /* Pods_Pinterest.framework */; };
 		75595B482725C20100DBB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B472725C20100DBB009 /* AppDelegate.swift */; };
 		75595B4A2725C20100DBB009 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B492725C20100DBB009 /* SceneDelegate.swift */; };
-		75595B4C2725C20100DBB009 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B4B2725C20100DBB009 /* ViewController.swift */; };
+		75595B4C2725C20100DBB009 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B4B2725C20100DBB009 /* IntroViewController.swift */; };
 		75595B512725C20600DBB009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75595B502725C20600DBB009 /* Assets.xcassets */; };
 		75595B542725C20600DBB009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75595B522725C20600DBB009 /* LaunchScreen.storyboard */; };
 		75595B5F2725C20600DBB009 /* PinterestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B5E2725C20600DBB009 /* PinterestTests.swift */; };
 		75595B692725C20600DBB009 /* PinterestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75595B682725C20600DBB009 /* PinterestUITests.swift */; };
 		755F8C9D2725E60A00398ADD /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 755F8C9C2725E60A00398ADD /* Assets */; };
 		75A1F60C2735BFEA00E4170A /* Subclasses in Resources */ = {isa = PBXBuildFile; fileRef = 75A1F60B2735BFEA00E4170A /* Subclasses */; };
+		75A1F60E2740546400E4170A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1F60D2740546300E4170A /* MainTabBarController.swift */; };
 		8F054B48D30374B5B99A44B8 /* Pods_PinterestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1118C39C615EC78BF101AEBC /* Pods_PinterestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +47,7 @@
 		75595B442725C20100DBB009 /* Pinterest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinterest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75595B472725C20100DBB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75595B492725C20100DBB009 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		75595B4B2725C20100DBB009 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75595B4B2725C20100DBB009 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		75595B502725C20600DBB009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75595B532725C20600DBB009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75595B552725C20600DBB009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		755F8CA82725E62B00398ADD /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		755F8CAA2725E62B00398ADD /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		75A1F60B2735BFEA00E4170A /* Subclasses */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Subclasses; sourceTree = "<group>"; };
+		75A1F60D2740546300E4170A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9361242BDDEE6D26E035A897 /* Pods-Pinterest-PinterestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinterest-PinterestUITests.release.xcconfig"; path = "Target Support Files/Pods-Pinterest-PinterestUITests/Pods-Pinterest-PinterestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BBD2A3AF710506CA0BFC4DAA /* Pods-PinterestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinterestTests.release.xcconfig"; path = "Target Support Files/Pods-PinterestTests/Pods-PinterestTests.release.xcconfig"; sourceTree = "<group>"; };
 		BDDF16ACCD136F6FDD101097 /* Pods-Pinterest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinterest.debug.xcconfig"; path = "Target Support Files/Pods-Pinterest/Pods-Pinterest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,7 +140,8 @@
 				755F8C9C2725E60A00398ADD /* Assets */,
 				75595B472725C20100DBB009 /* AppDelegate.swift */,
 				75595B492725C20100DBB009 /* SceneDelegate.swift */,
-				75595B4B2725C20100DBB009 /* ViewController.swift */,
+				75595B4B2725C20100DBB009 /* IntroViewController.swift */,
+				75A1F60D2740546300E4170A /* MainTabBarController.swift */,
 				75595B502725C20600DBB009 /* Assets.xcassets */,
 				75595B522725C20600DBB009 /* LaunchScreen.storyboard */,
 				75595B552725C20600DBB009 /* Info.plist */,
@@ -463,8 +466,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75595B4C2725C20100DBB009 /* ViewController.swift in Sources */,
+				75595B4C2725C20100DBB009 /* IntroViewController.swift in Sources */,
 				75595B482725C20100DBB009 /* AppDelegate.swift in Sources */,
+				75A1F60E2740546400E4170A /* MainTabBarController.swift in Sources */,
 				75595B4A2725C20100DBB009 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

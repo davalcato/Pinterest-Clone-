@@ -41,6 +41,15 @@ extension UIView: GradientProvider {
 
 class IntroViewController: UIViewController {
     
+    let gradientView: GradientView = {
+        let v = GradientView()
+        v.gradientLayer.gradient = (start: CGPoint(x: 0.5, y: 1), end: CGPoint(x: 0.5, y: 0))
+        // Set the colors
+        v.gradientLayer.colors = [UIColor(white: 1, alpha: 1).cgColor, UIColor(white: 1, alpha: 0)]
+        
+        return v
+    }()
+    
 //    let headerImgView: UIImageView = {
 //        let iv = UIImageView(image: UIImage.gifImageWithName("giphy"))
 //
@@ -80,6 +89,10 @@ class IntroViewController: UIViewController {
             right: 0)
         loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16,
                                                       weight: .bold)
+        //  when tapped takes the user to MainTabBarController
+        loginBtn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
+        
+        
         loginBtn.layer.cornerRadius = 15
         loginBtn.clipsToBounds = true
         
@@ -179,11 +192,18 @@ class IntroViewController: UIViewController {
         btnStackView.heightAnchor.constraint(equalToConstant: (loginBtn.frame.height * 3) + 10).isActive = true
     }
     
+    @objc func loginBtnTapped() {
+        present(MainTabBarController(), animated: false, completion: nil)
+        
+    }
+    
     func setupElements() {
         view.addSubview(loginBtn)
         view.addSubview(btnStackView)
         view.addSubview(welcomeLbl)
         view.addSubview(logoImgView)
+        
+//        headerImgView.addSubview(gradientView)
 //        view.addSubview(headerImgView)
         
         // loginBtn constraits
@@ -238,6 +258,18 @@ class IntroViewController: UIViewController {
 //            top: nil,
 //            left: view.leftAnchor,
 //            bottom: welcomeLbl.topAnchor,
+//            right: view.rightAnchor,
+//            topConstant: 0,
+//            leftConstant: 0,
+//            bottomConstant: 0,
+//            rightConstant: 0,
+//            widthConstant: 0,
+//            heightConstant: 0)
+//
+//        gradientView.constraint(
+//            top: view.topAnchor,
+//            left: view.leftAnchor,
+//            bottom: headerImgView.bottomAnchor,
 //            right: view.rightAnchor,
 //            topConstant: 0,
 //            leftConstant: 0,
