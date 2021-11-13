@@ -34,12 +34,32 @@ class MainTabBarController: UITabBarController {
             NSAttributedString.Key.foregroundColor: UIColor.gray
         // when select title color is gray
         ], for: .selected)
+        
         // setup viewcontrollers
         viewControllers = [
-            feedNavController
+            feedNavController,
+            generateNavControllers(title: "Notifications", image: UIImage(named: "notifications-tab")!),
+            generateNavControllers(title: "Saved", image: UIImage(named: "profile-tab")!)
         
         ]
     }
+    // generate fake navigation controllers
+    func generateNavControllers(title: String, image: UIImage) -> UINavigationController {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .white
+        // created the navController
+        let navController = UINavigationController(rootViewController: vc)
+        // setup attributes
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = image
+        navController.tabBarItem.setTitleTextAttributes([
+            NSAttributedString.Key.foregroundColor: UIColor.gray
+        
+        ], for: .selected)
+        return navController
+        
+    }
+    
 }
 
 
