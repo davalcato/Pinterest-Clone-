@@ -11,10 +11,12 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UITabBar.appearance().tintColor = UIColor.gray
-        
-        tabBar.barTintColor = UIColor.white
+        // this code fixes the tabBar color
+        let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = tabBar.standardAppearance
         tabBar.clipsToBounds = true
         
         setupViewController()
@@ -60,6 +62,24 @@ class MainTabBarController: UITabBarController {
         
     }
     
+}
+
+// MARK: Navigation Bar Appearance Function
+extension MainTabBarController {
+    func setNavigationBarAppearance(color: UIColor) {
+        if #available(iOS 15.0, *){
+            let appearance = UITabBarAppearance()
+                    appearance.configureWithOpaqueBackground()
+                    appearance.backgroundColor = .white //or whatever your color is
+                    
+                    tabBar.scrollEdgeAppearance = appearance
+                    tabBar.standardAppearance = appearance
+            
+        } else { // Background color support for older versions
+            self.navigationController?.navigationBar.barTintColor = .white
+            
+        }
+    }
 }
 
 
