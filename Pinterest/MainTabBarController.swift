@@ -64,23 +64,6 @@ class MainTabBarController: UITabBarController {
     
 }
 
-// MARK: Navigation Bar Appearance Function
-extension MainTabBarController {
-    func setNavigationBarAppearance(color: UIColor) {
-        if #available(iOS 15.0, *){
-            let appearance = UITabBarAppearance()
-                    appearance.configureWithOpaqueBackground()
-                    appearance.backgroundColor = .white //or whatever your color is
-                    
-                    tabBar.scrollEdgeAppearance = appearance
-                    tabBar.standardAppearance = appearance
-            
-        } else { // Background color support for older versions
-            self.navigationController?.navigationBar.barTintColor = .white
-            
-        }
-    }
-}
 
 
 
