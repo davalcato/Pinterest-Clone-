@@ -9,6 +9,18 @@ import UIKit
 
 
 class FeedViewController: UIViewController {
+    
+    // setup collectionView
+    let collectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        cv.register(PinterestCell.self, forCellWithReuseIdentifier: "cellId")
+        cv.backgroundColor = .clear
+        cv.showsVerticalScrollIndicator = false
+        cv.contentInset.top = 5
+        
+        return cv
+    }()
+    
     // adding search
     let searchTF: UITextField = {
         let tf = UITextField()
@@ -17,12 +29,12 @@ class FeedViewController: UIViewController {
         tf.clipsToBounds = true
         tf.layer.cornerRadius = 10
         
-        // containview for search
+        // containview for search field
         let rightView = UIView(frame: CGRect(
             x: 0,
             y: 0,
             width: 38,
-            height: 25))
+            height: -10))
         // button
         let rightBtn = UIButton(type: .custom)
         rightBtn.setImage(UIImage(named: "camera-icon"), for: .normal)
@@ -76,7 +88,7 @@ class FeedViewController: UIViewController {
             bottom: nil,
             right: nil,
             topConstant: 0,
-            leftConstant: 13,
+            leftConstant: -0,
             bottomConstant: 0,
             rightConstant: 0,
             widthConstant: 17,
@@ -98,12 +110,37 @@ class FeedViewController: UIViewController {
         return btn
     }()
     
+    // call a method here
+    let posts = PostProvider.GetPosts()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         
-        // add navBar
+        // set the collectionView
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        setupNavBar()
+        
+        // add the collectionView as a subview
+        view.addSubview(collectionView)
+        
+        collectionView.constraint(
+            top: view.topAnchor,
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor,
+            topConstant: 0,
+            leftConstant: 0,
+            bottomConstant: 0,
+            rightConstant: 0,
+            widthConstant: 0,
+            heightConstant: 0)
+        
+    // navBar into separate function
+    func setupNavBar() {
         guard let navBar = navigationController?.navigationBar else { return }
         
         navBar.isTranslucent = false
@@ -134,10 +171,93 @@ class FeedViewController: UIViewController {
             topConstant: 5,
             leftConstant: 10,
             bottomConstant: 5,
-            rightConstant: 18,
+            rightConstant: 10,
             widthConstant: 0,
             heightConstant: 0)
         
+        }
     }
 }
 
+extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return posts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as?
+            PinterestCell {
+            cell.mainImgView.image = posts[indexPath.row].image
+            return cell
+        }
+        // otherwise return UICollectionViewCell
+        return UICollectionViewCell()
+    }
+}
+
+class PinterestCell: UICollectionViewCell {
+    
+    // declare here
+    let mainImgView: UIImageView = {
+        let iv = UIImageView()
+        // setup properties
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 8
+        iv.contentMode = .scaleAspectFill
+        
+        return iv
+    }()
+    
+    // more button
+    let moreImgView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "more")?.withRenderingMode(.alwaysTemplate)
+        iv.tintColor = UIColor.lightGray
+        
+        return iv
+        
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        // add constraints
+        backgroundColor = .clear
+        
+        addSubview(mainImgView)
+        addSubview(moreImgView)
+        
+        mainImgView.constraint(
+            top: topAnchor,
+            left: leftAnchor,
+            bottom: moreImgView.topAnchor,
+            right: rightAnchor,
+            topConstant: 0,
+            leftConstant: 0,
+            bottomConstant: 0,
+            rightConstant: 0,
+            widthConstant: 0,
+            heightConstant: 0)
+        
+        moreImgView.constraint(
+            top: nil,
+            left: nil,
+            bottom: bottomAnchor,
+            right: rightAnchor,
+            topConstant: 10,
+            leftConstant: 0,
+            bottomConstant: 0,
+            rightConstant: 0,
+            widthConstant: 15,
+            heightConstant: 15)
+        
+        
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
