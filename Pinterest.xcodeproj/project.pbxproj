@@ -21,6 +21,7 @@
 		75A1F61027405A4300E4170A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1F60F27405A4300E4170A /* FeedViewController.swift */; };
 		75B5D464275C140100AA3148 /* Helpers in Resources */ = {isa = PBXBuildFile; fileRef = 75B5D463275C140000AA3148 /* Helpers */; };
 		75B5D4682760080200AA3148 /* PostProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5D4672760080200AA3148 /* PostProvider.swift */; };
+		75B5D46A2760172600AA3148 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5D4692760172500AA3148 /* PinterestLayout.swift */; };
 		8F054B48D30374B5B99A44B8 /* Pods_PinterestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1118C39C615EC78BF101AEBC /* Pods_PinterestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		75A1F60F27405A4300E4170A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		75B5D463275C140000AA3148 /* Helpers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Helpers; sourceTree = "<group>"; };
 		75B5D4672760080200AA3148 /* PostProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProvider.swift; sourceTree = "<group>"; };
+		75B5D4692760172500AA3148 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		9361242BDDEE6D26E035A897 /* Pods-Pinterest-PinterestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinterest-PinterestUITests.release.xcconfig"; path = "Target Support Files/Pods-Pinterest-PinterestUITests/Pods-Pinterest-PinterestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BBD2A3AF710506CA0BFC4DAA /* Pods-PinterestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinterestTests.release.xcconfig"; path = "Target Support Files/Pods-PinterestTests/Pods-PinterestTests.release.xcconfig"; sourceTree = "<group>"; };
 		BDDF16ACCD136F6FDD101097 /* Pods-Pinterest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinterest.debug.xcconfig"; path = "Target Support Files/Pods-Pinterest/Pods-Pinterest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				75595B4B2725C20100DBB009 /* IntroViewController.swift */,
 				75A1F60D2740546300E4170A /* MainTabBarController.swift */,
 				75A1F60F27405A4300E4170A /* FeedViewController.swift */,
+				75B5D4692760172500AA3148 /* PinterestLayout.swift */,
 				75595B502725C20600DBB009 /* Assets.xcassets */,
 				75595B522725C20600DBB009 /* LaunchScreen.storyboard */,
 				75595B552725C20600DBB009 /* Info.plist */,
@@ -419,6 +422,7 @@
 				75595B4C2725C20100DBB009 /* IntroViewController.swift in Sources */,
 				75595B482725C20100DBB009 /* AppDelegate.swift in Sources */,
 				75A1F61027405A4300E4170A /* FeedViewController.swift in Sources */,
+				75B5D46A2760172600AA3148 /* PinterestLayout.swift in Sources */,
 				75A1F60E2740546400E4170A /* MainTabBarController.swift in Sources */,
 				75B5D4682760080200AA3148 /* PostProvider.swift in Sources */,
 				75595B4A2725C20100DBB009 /* SceneDelegate.swift in Sources */,
