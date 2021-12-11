@@ -10,9 +10,11 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    // setup collectionView
-    let collectionView: UICollectionView = {
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    // setup collectionView - lazy var to access self delegate
+    lazy var collectionView: UICollectionView = {
+        let layout = PinterestLayout()
+        layout.delegate = self
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(PinterestCell.self, forCellWithReuseIdentifier: "cellId")
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
@@ -194,6 +196,13 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         // otherwise return UICollectionViewCell
         return UICollectionViewCell()
+    }
+}
+// conform to layoutDelegate
+extension FeedViewController: PinterestLayoutDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
+        return posts[indexPath.row].image.size.height / 4
     }
 }
 
