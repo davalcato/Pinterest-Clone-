@@ -197,7 +197,29 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         // otherwise return UICollectionViewCell
         return UICollectionViewCell()
     }
+    // add new method
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        // create new variable
+        let vc = DetailViewController()
+        
+        if let pinterestCell = collectionView.cellForItem(at: indexPath) as? PinterestCell {
+            vc.cc_setZoomTransition(originalView: pinterestCell.mainImgView)
+            
+            let i : UIImage = posts[indexPath.row].image
+            
+            // set post for viewcontroller
+            vc.post = Post(image: i,
+                           title: posts[indexPath.row].title,
+                           description: posts[indexPath.row].description)
+            
+        }
+        
+        self.present(vc, animated: true, completion: nil)
+        
+        return false
+    }
 }
+
 // conform to layoutDelegate
 extension FeedViewController: PinterestLayoutDelegate {
     
