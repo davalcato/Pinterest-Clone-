@@ -7,6 +7,27 @@
 
 import UIKit
 
+extension UIImage {
+    
+    func resizeImage(newSize: CGSize) -> UIImage {
+        // create a graphic context
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        // define the image
+        self.draw(in: CGRect(
+            x: 0,
+            y: 0,
+            width: newSize.width,
+            height: newSize.height))
+        
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        // end the graphics
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+
 // define the class
 class DetailViewController: UIViewController {
     

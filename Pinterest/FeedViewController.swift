@@ -207,8 +207,11 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             let i : UIImage = posts[indexPath.row].image
             
+            // define the image from detailView
+            let resizedImage = i.resizeImage(newSize: CGSize(width: UIScreen.main.bounds.width - 36, height: (UIScreen.main.bounds.width - 36) * (i.size.height / i.size.width)))
+            
             // set post for viewcontroller
-            vc.post = Post(image: i,
+            vc.post = Post(image: resizedImage,
                            title: posts[indexPath.row].title,
                            description: posts[indexPath.row].description)
             
