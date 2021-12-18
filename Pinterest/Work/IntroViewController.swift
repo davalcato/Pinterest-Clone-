@@ -51,7 +51,7 @@ class IntroViewController: UIViewController {
     }()
     
     let headerImgView: UIImageView = {
-        let iv = UIImageView(image: UIImage.gifImageWithName("giphy"))
+        let iv = UIImageView(image: UIImage.gifImageWithName("giphy.gif"))
 
         return iv
 

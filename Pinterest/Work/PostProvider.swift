@@ -8,13 +8,6 @@
 
 import UIKit
 
-struct Post {
-    let image: UIImage
-    let title: String
-    let description: String
-}
-
-
 class PostProvider {
     
     static func GetPosts() -> [Post] {
