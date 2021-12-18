@@ -50,12 +50,12 @@ class IntroViewController: UIViewController {
         return v
     }()
     
-//    let headerImgView: UIImageView = {
-//        let iv = UIImageView(image: UIImage.gifImageWithName("giphy"))
-//
-//        return iv
-//
-//    }()
+    let headerImgView: UIImageView = {
+        let iv = UIImageView(image: UIImage.gifImageWithName("giphy"))
+
+        return iv
+
+    }()
     
     let logoImgView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "logo"))
@@ -203,8 +203,8 @@ class IntroViewController: UIViewController {
         view.addSubview(welcomeLbl)
         view.addSubview(logoImgView)
         
-//        headerImgView.addSubview(gradientView)
-//        view.addSubview(headerImgView)
+        headerImgView.addSubview(gradientView)
+        view.addSubview(headerImgView)
         
         // loginBtn constraits
         loginBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor,
@@ -254,29 +254,29 @@ class IntroViewController: UIViewController {
             heightConstant: 140)
         logoImgView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-//        headerImgView.constraint(
-//            top: nil,
-//            left: view.leftAnchor,
-//            bottom: welcomeLbl.topAnchor,
-//            right: view.rightAnchor,
-//            topConstant: 0,
-//            leftConstant: 0,
-//            bottomConstant: 0,
-//            rightConstant: 0,
-//            widthConstant: 0,
-//            heightConstant: 0)
-//
-//        gradientView.constraint(
-//            top: view.topAnchor,
-//            left: view.leftAnchor,
-//            bottom: headerImgView.bottomAnchor,
-//            right: view.rightAnchor,
-//            topConstant: 0,
-//            leftConstant: 0,
-//            bottomConstant: 0,
-//            rightConstant: 0,
-//            widthConstant: 0,
-//            heightConstant: 0)
+        headerImgView.constraint(
+            top: nil,
+            left: view.leftAnchor,
+            bottom: welcomeLbl.topAnchor,
+            right: view.rightAnchor,
+            topConstant: 0,
+            leftConstant: 0,
+            bottomConstant: 0,
+            rightConstant: 0,
+            widthConstant: 0,
+            heightConstant: 0)
+
+        gradientView.constraint(
+            top: view.topAnchor,
+            left: view.leftAnchor,
+            bottom: headerImgView.bottomAnchor,
+            right: view.rightAnchor,
+            topConstant: 0,
+            leftConstant: 0,
+            bottomConstant: 0,
+            rightConstant: 0,
+            widthConstant: 0,
+            heightConstant: 0)
         
     }
 }

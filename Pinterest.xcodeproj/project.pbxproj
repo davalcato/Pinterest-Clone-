@@ -27,6 +27,8 @@
 		75D6288D27656F8400125509 /* CCZoomTransitionVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6288927656E7600125509 /* CCZoomTransitionVCExtension.swift */; };
 		75D6288E27656F8700125509 /* CCSwipBackPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6288A27656E7600125509 /* CCSwipBackPresentationController.swift */; };
 		75D6288F27656F8D00125509 /* CCZoomTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6288B27656E7600125509 /* CCZoomTransitioner.swift */; };
+		75D62892276D4E2000125509 /* GIFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D62891276D4E1F00125509 /* GIFImageView.swift */; };
+		75D62895276D50AC00125509 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D62894276D50AC00125509 /* UIColorExtension.swift */; };
 		8F054B48D30374B5B99A44B8 /* Pods_PinterestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1118C39C615EC78BF101AEBC /* Pods_PinterestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		75D6288927656E7600125509 /* CCZoomTransitionVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCZoomTransitionVCExtension.swift; sourceTree = "<group>"; };
 		75D6288A27656E7600125509 /* CCSwipBackPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSwipBackPresentationController.swift; sourceTree = "<group>"; };
 		75D6288B27656E7600125509 /* CCZoomTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCZoomTransitioner.swift; sourceTree = "<group>"; };
+		75D62891276D4E1F00125509 /* GIFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageView.swift; sourceTree = "<group>"; };
+		75D62894276D50AC00125509 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9361242BDDEE6D26E035A897 /* Pods-Pinterest-PinterestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinterest-PinterestUITests.release.xcconfig"; path = "Target Support Files/Pods-Pinterest-PinterestUITests/Pods-Pinterest-PinterestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BBD2A3AF710506CA0BFC4DAA /* Pods-PinterestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinterestTests.release.xcconfig"; path = "Target Support Files/Pods-PinterestTests/Pods-PinterestTests.release.xcconfig"; sourceTree = "<group>"; };
 		BDDF16ACCD136F6FDD101097 /* Pods-Pinterest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinterest.debug.xcconfig"; path = "Target Support Files/Pods-Pinterest/Pods-Pinterest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,12 +150,13 @@
 			children = (
 				75B5D463275C140000AA3148 /* Helpers */,
 				755F8C9C2725E60A00398ADD /* Assets */,
-				75D6288727656E7600125509 /* CCZoomTransition */,
 				75595B472725C20100DBB009 /* AppDelegate.swift */,
+				75D62891276D4E1F00125509 /* GIFImageView.swift */,
 				75D6288827656E7600125509 /* CCZoomAnimatedTransitioning.swift */,
 				75D6288A27656E7600125509 /* CCSwipBackPresentationController.swift */,
 				75D6288B27656E7600125509 /* CCZoomTransitioner.swift */,
 				75D6288927656E7600125509 /* CCZoomTransitionVCExtension.swift */,
+				75D62894276D50AC00125509 /* UIColorExtension.swift */,
 				75595B492725C20100DBB009 /* SceneDelegate.swift */,
 				75595B4B2725C20100DBB009 /* IntroViewController.swift */,
 				75A1F60D2740546300E4170A /* MainTabBarController.swift */,
@@ -180,13 +185,6 @@
 				75595B682725C20600DBB009 /* PinterestUITests.swift */,
 			);
 			path = PinterestUITests;
-			sourceTree = "<group>";
-		};
-		75D6288727656E7600125509 /* CCZoomTransition */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CCZoomTransition;
 			sourceTree = "<group>";
 		};
 		B5DCDDA85A33D9C4A6BE4A53 /* Pods */ = {
@@ -442,6 +440,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D62892276D4E2000125509 /* GIFImageView.swift in Sources */,
+				75D62895276D50AC00125509 /* UIColorExtension.swift in Sources */,
 				75D6288F27656F8D00125509 /* CCZoomTransitioner.swift in Sources */,
 				75595B4C2725C20100DBB009 /* IntroViewController.swift in Sources */,
 				75595B482725C20100DBB009 /* AppDelegate.swift in Sources */,

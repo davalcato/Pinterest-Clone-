@@ -284,8 +284,6 @@ class PinterestCell: UICollectionViewCell {
             widthConstant: 15,
             heightConstant: 15)
         
-        
-        
     }
     
     required init?(coder: NSCoder) {
