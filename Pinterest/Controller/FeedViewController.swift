@@ -206,7 +206,6 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             vc.cc_setZoomTransition(originalView: pinterestCell.mainImgView)
             
             let i : UIImage = posts[indexPath.row].image
-            
             // define the image from detailView
             let resizedImage = i.resizeImage(newSize: CGSize(width: UIScreen.main.bounds.width - 36, height: (UIScreen.main.bounds.width - 36) * (i.size.height / i.size.width)))
             

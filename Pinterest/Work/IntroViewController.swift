@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftGifOrigin
+import GoogleSignIn
 
 class GradientLayer: CAGradientLayer {
     var gradient: (start: CGPoint, end: CGPoint)? {
@@ -156,6 +157,7 @@ class IntroViewController: UIViewController {
         googleBtn.layer.cornerRadius = 15
         googleBtn.clipsToBounds = true
         
+        
         return googleBtn
     }()
     
@@ -180,6 +182,8 @@ class IntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        GIDSignIn.sharedInstance().presentingViewController = self
         
         view.backgroundColor = .white
 
