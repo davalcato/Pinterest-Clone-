@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  IntroViewController.swift
 //  Pinterest
 //
 //  Created by Daval Cato on 10/24/21.
@@ -40,7 +40,11 @@ extension UIView: GradientProvider {
     
 }
 
-class IntroViewController: UIViewController {
+class IntroViewController: UIViewController, GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+    
     
     let gradientView: GradientView = {
         let v = GradientView()
@@ -156,10 +160,18 @@ class IntroViewController: UIViewController {
                                                       weight: .bold)
         googleBtn.layer.cornerRadius = 15
         googleBtn.clipsToBounds = true
+        googleBtn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         
         return googleBtn
     }()
+    
+    @objc func buttonAction(sender: UIButton!) {
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
+        
+      print("Button tapped")
+    }
     
     // Add the buttons to a stack view
     lazy var btnStackView: UIStackView = {
@@ -181,8 +193,7 @@ class IntroViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        // telling the instance that is the prompt to sign in
         GIDSignIn.sharedInstance().presentingViewController = self
         
         view.backgroundColor = .white
