@@ -120,9 +120,15 @@ class IntroViewController: UIViewController, GIDSignInDelegate {
                                                       weight: .bold)
         emailBtn.layer.cornerRadius = 15
         emailBtn.clipsToBounds = true
+        emailBtn.addTarget(self, action: #selector(emailBtnAction), for: .touchUpInside)
         
         return emailBtn
     }()
+    
+    @objc func emailBtnAction(sender: UIButton!) {
+        
+        print("Button tapped")
+    }
     
     let facebookBtn: UIButton = {
         // loginBtn here
@@ -140,9 +146,15 @@ class IntroViewController: UIViewController, GIDSignInDelegate {
                                                       weight: .bold)
         facebookBtn.layer.cornerRadius = 15
         facebookBtn.clipsToBounds = true
+        facebookBtn.addTarget(self, action: #selector(facebookBtnAction), for: .touchUpInside)
         
         return facebookBtn
     }()
+    
+    @objc func facebookBtnAction(sender: UIButton!) {
+        
+        print("Button tapped")
+    }
     
     let googleBtn: UIButton = {
         // loginBtn here
