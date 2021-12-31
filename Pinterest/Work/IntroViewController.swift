@@ -8,6 +8,7 @@
 import UIKit
 import SwiftGifOrigin
 import GoogleSignIn
+import FBSDKLoginKit
 
 class GradientLayer: CAGradientLayer {
     var gradient: (start: CGPoint, end: CGPoint)? {
@@ -40,7 +41,25 @@ extension UIView: GradientProvider {
     
 }
 
-class IntroViewController: UIViewController, GIDSignInDelegate {
+class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        // get access token
+        let token = result?.token?.tokenString
+        
+        // create request
+        let request = FBSDKLoginKit.GraphRequest(
+            graphPath: "",
+            parameters: ["fields": ""],
+            tokenString: token,
+            version: nil,
+            httpMethod: .get)
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        <#code#>
+    }
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
     }
@@ -56,7 +75,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate {
     }()
     
     let headerImgView: UIImageView = {
-        let iv = UIImageView(image: UIImage.gifImageWithName("giphy.gif"))
+        let iv = UIImageView(image: UIImage.gifImageWithName("giphy"))
 
         return iv
 
@@ -104,28 +123,28 @@ class IntroViewController: UIViewController, GIDSignInDelegate {
         return loginBtn
     }()
     
-    let emailBtn: UIButton = {
+    let appleBtn: UIButton = {
         // loginBtn here
-        let emailBtn = UIButton()
-        emailBtn.translatesAutoresizingMaskIntoConstraints = false
-        emailBtn.setTitle("Continue with email", for: .normal)
-        emailBtn.backgroundColor = UIColor.red
-        emailBtn.setTitleColor(UIColor.white, for: .normal)
-        emailBtn.contentEdgeInsets = UIEdgeInsets(
+        let appleBtn = UIButton()
+        appleBtn.translatesAutoresizingMaskIntoConstraints = false
+        appleBtn.setTitle("Continue with Apple", for: .normal)
+        appleBtn.backgroundColor = UIColor.black
+        appleBtn.setTitleColor(UIColor.white, for: .normal)
+        appleBtn.contentEdgeInsets = UIEdgeInsets(
             top: 13,
             left: 0,
             bottom: 13,
             right: 0)
-        emailBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16,
+        appleBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16,
                                                       weight: .bold)
-        emailBtn.layer.cornerRadius = 15
-        emailBtn.clipsToBounds = true
-        emailBtn.addTarget(self, action: #selector(emailBtnAction), for: .touchUpInside)
+        appleBtn.layer.cornerRadius = 15
+        appleBtn.clipsToBounds = true
+        appleBtn.addTarget(self, action: #selector(appleBtnAction), for: .touchUpInside)
         
-        return emailBtn
+        return appleBtn
     }()
     
-    @objc func emailBtnAction(sender: UIButton!) {
+    @objc func appleBtnAction(sender: UIButton!) {
         
         print("Button tapped")
     }
@@ -181,8 +200,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate {
     @objc func buttonAction(sender: UIButton!) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signIn()
-        
-      print("Button tapped")
+//        present(MainTabBarController(), animated: false, completion: nil)
     }
     
     // Add the buttons to a stack view
@@ -194,7 +212,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate {
         s.spacing = 9
         s.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        s.addArrangedSubview(emailBtn)
+        s.addArrangedSubview(appleBtn)
         s.addArrangedSubview(facebookBtn)
         s.addArrangedSubview(googleBtn)
         
@@ -205,6 +223,25 @@ class IntroViewController: UIViewController, GIDSignInDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check if user is signed in
+        if let token = AccessToken.current,
+                !token.isExpired {
+                // User is logged in, do work such as go to next view controller.
+        }
+        else {
+            
+            let loginButton = FBLoginButton()
+            loginButton.center = view.center
+            loginButton.delegate = self
+            
+            // get permissions
+            loginButton.permissions = ["public_profile", "email"]
+              
+            
+            view.addSubview(loginButton)
+        }
+        
         // telling the instance that is the prompt to sign in
         GIDSignIn.sharedInstance().presentingViewController = self
         

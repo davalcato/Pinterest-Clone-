@@ -7,10 +7,12 @@ target 'Pinterest' do
 
   # Pods for Pinterest
   pod 'SDWebImage'
-  pod 'SwiftGifOrigin'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn', '~> 5.0'
+  pod 'SwiftGifOrigin', '~> 1.7.0'
+  pod 'FBSDKLoginKit'
+  
 
 
   target 'PinterestTests' do
