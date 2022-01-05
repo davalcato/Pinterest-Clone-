@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     didFinishLaunchingWithOptions: launchOptions
                 )
 
-        
-        
         // Override point for customization after application launch.
         FirebaseApp.configure()
         

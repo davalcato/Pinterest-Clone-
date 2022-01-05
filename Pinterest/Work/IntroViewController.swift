@@ -50,14 +50,21 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         // create request
         let request = FBSDKLoginKit.GraphRequest(
             graphPath: "",
-            parameters: ["fields": ""],
+            parameters: ["fields": "email, name"],
             tokenString: token,
             version: nil,
             httpMethod: .get)
+        
+        // start request
+        request.start(completionHandler: {connection, result, error in
+            print("\(result)")
+        })
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        <#code#>
+        
+        
+        
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -172,6 +179,29 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     @objc func facebookBtnAction(sender: UIButton!) {
         
+        // check if user is signed in
+        if let token = AccessToken.current,
+                !token.isExpired {
+            
+            let token = token.tokenString
+            
+            // create request
+            let request = FBSDKLoginKit.GraphRequest(
+                graphPath: "me",
+                parameters: ["fields": "email, name"],
+                tokenString: token,
+                version: nil,
+                httpMethod: .get)
+            
+            // start request
+            request.start(completionHandler: {connection, result, error in
+                print("\(result)")
+            })
+            
+                // User is logged in, do work such as go to next view controller.
+        }
+        
+        
         print("Button tapped")
     }
     
@@ -220,27 +250,39 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         
     }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // check if user is signed in
         if let token = AccessToken.current,
                 !token.isExpired {
+            
+            let token = token.tokenString
+            
+            // create request
+            let request = FBSDKLoginKit.GraphRequest(
+                graphPath: "me",
+                parameters: ["fields": "email, name"],
+                tokenString: token,
+                version: nil,
+                httpMethod: .get)
+            
+            // start request
+            request.start(completionHandler: {connection, result, error in
+                print("\(result)")
+            })
+            
                 // User is logged in, do work such as go to next view controller.
         }
-        else {
-            
-            let loginButton = FBLoginButton()
-            loginButton.center = view.center
-            loginButton.delegate = self
-            
-            // get permissions
-            loginButton.permissions = ["public_profile", "email"]
-              
-            
-            view.addSubview(loginButton)
-        }
+//        else {
+//
+//            let loginButton = FBLoginButton()
+//            loginButton.center = view.center
+//            loginButton.delegate = self
+//            // get permissions
+//            loginButton.permissions = ["public_profile", "email"]
+//
+//            view.addSubview(loginButton)
+//        }
         
         // telling the instance that is the prompt to sign in
         GIDSignIn.sharedInstance().presentingViewController = self

@@ -12,6 +12,9 @@ target 'Pinterest' do
   pod 'GoogleSignIn', '~> 5.0'
   pod 'SwiftGifOrigin', '~> 1.7.0'
   pod 'FBSDKLoginKit'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
   
 
 
