@@ -5,6 +5,12 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1457624487810770</string>
+			</array>
+		</dict>
+		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
@@ -12,6 +18,30 @@
 				<string>com.googleusercontent.apps.865210992068-i18lunlsgbvrebc5ijror22hlidpbvcn</string>
 			</array>
 		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>1457624487810770</string>
+	<key>FacebookClientToken</key>
+	<string>79177cea581cb633d97b68774efe5c7c</string>
+	<key>FacebookDisplayName</key>
+	<string>Pinterest App</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbapi20160328</string>
+		<string>fbauth</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -30,51 +60,7 @@
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 				</dict>
 			</array>
-            
 		</dict>
 	</dict>
-    
-    
-    <key>CFBundleURLTypes</key>
-                <array>
-                  <dict>
-                  <key>CFBundleURLSchemes</key>
-                  <array>
-                    <string>fb1457624487810770</string>
-                  </array>
-                  </dict>
-                </array>
-                <key>FacebookAppID</key>
-                <string>1457624487810770</string>
-                <key>FacebookClientToken</key>
-                <string>79177cea581cb633d97b68774efe5c7c</string>
-                <key>FacebookDisplayName</key>
-                <string>Pinterest App</string>
-                
-                
-                <key>LSApplicationQueriesSchemes</key>
-                <array>
-                  <string>fbapi</string>
-                  <string>fbapi20130214</string>
-                  <string>fbapi20130410</string>
-                  <string>fbapi20130702</string>
-                  <string>fbapi20131010</string>
-                  <string>fbapi20131219</string>
-                  <string>fbapi20140410</string>
-                  <string>fbapi20140116</string>
-                  <string>fbapi20150313</string>
-                  <string>fbapi20150629</string>
-                  <string>fbapi20160328</string>
-                  <string>fbauth</string>
-                  <string>fb-messenger-share-api</string>
-                  <string>fbauth2</string>
-                  <string>fbshareextension</string>
-                </array>
-    
-    
-    
-    
-    
-    
 </dict>
 </plist>
