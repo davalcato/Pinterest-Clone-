@@ -65,7 +65,6 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     func loginButtonDidLogOut(_ loginButton: FBLoginButton!) {
         print("User Logged Out")
         
-        
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -158,7 +157,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     let facebookBtn: UIButton = {
-        // loginBtn here
+        // Creates facebook button
         let facebookBtn = UIButton()
         facebookBtn.translatesAutoresizingMaskIntoConstraints = false
         facebookBtn.setTitle("Continue with Facebook", for: .normal)
@@ -173,12 +172,23 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                                                       weight: .bold)
         facebookBtn.layer.cornerRadius = 15
         facebookBtn.clipsToBounds = true
-        facebookBtn.addTarget(self, action: #selector(facebookBtnAction), for: .touchUpInside)
+        facebookBtn.setImage(UIImage(named: "logo-tab"), for: .normal)
+        facebookBtn.imageView?.contentMode = .scaleAspectFit
+        facebookBtn.tintColor = .white
+        facebookBtn.imageEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: -20,
+            bottom: 0,
+            right: 0)
+        
+        
+        
+        facebookBtn.addTarget(self, action: #selector(getFacebookUserInfo), for: .touchUpInside)
         
         return facebookBtn
     }()
     
-    @objc func facebookBtnAction(sender: UIButton!) {
+    @objc func getFacebookUserInfo(sender: UIButton!) {
         
         // check if user is signed in
         if let token = AccessToken.current,
@@ -204,7 +214,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         else {
 
             let loginButton = FBLoginButton()
-//            self.loginButtonDidLogOut(loginButton)
+            self.loginButtonDidLogOut(loginButton)
             loginButton.center = view.center
             loginButton.delegate = self
             // get permissions
@@ -232,6 +242,19 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                                                       weight: .bold)
         googleBtn.layer.cornerRadius = 15
         googleBtn.clipsToBounds = true
+        
+        googleBtn.setImage(UIImage(named: "logo-tab"), for: .normal)
+        googleBtn.imageView?.contentMode = .scaleAspectFit
+        googleBtn.tintColor = .white
+        googleBtn.imageEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: -35,
+            bottom: 0,
+            right: 0)
+        
+        
+        
+        
         googleBtn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         
@@ -434,6 +457,8 @@ extension UIView {
         constraints.forEach({$0.isActive = true})
     }
 }
+
+
 
 
 
