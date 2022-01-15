@@ -188,40 +188,55 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         return facebookBtn
     }()
     
-    @objc func getFacebookUserInfo(sender: UIButton!) {
+    @objc func getFacebookUserInfo() {
+        
+        LoginManager().logIn(permissions: ["public_profile", "email"], from: self) { Result, Error in
+            
+            if Error != nil {
+                print(" Custom Facebook Login failed:", Error)
+                return
+                
+            }
+            
+            print(Result?.token?.tokenString)
+            
+        }
+        
+        
+        
         
         // check if user is signed in
-        if let token = AccessToken.current,
-                !token.isExpired {
-            
-            let token = token.tokenString
-            
-            // create request
-            let request = FBSDKLoginKit.GraphRequest(
-                graphPath: "me",
-                parameters: ["fields": "email, name"],
-                tokenString: token,
-                version: nil,
-                httpMethod: .get)
-            
-            // start request
-            request.start(completionHandler: {connection, result, error in
-                print("\(result)")
-            })
-            
-                // User is logged in, do work such as go to next view controller.
-        }
-        else {
-
-            let loginButton = FBLoginButton()
-            self.loginButtonDidLogOut(loginButton)
-            loginButton.center = view.center
-            loginButton.delegate = self
-            // get permissions
-            loginButton.permissions = ["public_profile", "email"]
-
-            view.addSubview(loginButton)
-        }
+//        if let token = AccessToken.current,
+//                !token.isExpired {
+//
+//            let token = token.tokenString
+//
+//            // create request
+//            let request = FBSDKLoginKit.GraphRequest(
+//                graphPath: "/me",
+//                parameters: ["fields": "email, name"],
+//                tokenString: token,
+//                version: nil,
+//                httpMethod: .get)
+//
+//            // start request
+//            request.start(completionHandler: {connection, result, error in
+//                print("\(result)")
+//            })
+//
+//                // User is logged in, do work such as go to next view controller.
+//        }
+//        else {
+//
+//            let loginButton = FBLoginButton()
+//            self.loginButtonDidLogOut(loginButton)
+//            loginButton.center = view.center
+//            loginButton.delegate = self
+//            // get permissions
+//            loginButton.permissions = ["public_profile", "email"]
+//
+//            view.addSubview(loginButton)
+//        }
         
         print("Button tapped")
     }
@@ -286,6 +301,14 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+        
+        
+        
+        
         // check if user is signed in
 //        if let token = AccessToken.current,
 //                !token.isExpired {
