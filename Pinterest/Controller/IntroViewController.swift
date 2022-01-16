@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Firebase
 import SwiftGifOrigin
 import GoogleSignIn
 import FBSDKLoginKit
 import FBSDKCoreKit
+import FirebaseAuth
 
 class GradientLayer: CAGradientLayer {
     var gradient: (start: CGPoint, end: CGPoint)? {
@@ -45,24 +47,67 @@ extension UIView: GradientProvider {
 class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        
+        if error != nil {
+            print(error)
+            return
+            
+        }
+        
+        showEmailAddress()
+        
         // get access token
-        let token = result?.token?.tokenString
-        
-        // create request
-        let request = FBSDKLoginKit.GraphRequest(
-            graphPath: "",
-            parameters: ["fields": "email, name"],
-            tokenString: token,
-            version: nil,
-            httpMethod: .get)
-        
-        // start request
-        request.start(completionHandler: {connection, result, error in
-            print("\(result)")
-        })
+//        let token = result?.token?.tokenString
+//
+//        // create request
+//        let request = FBSDKLoginKit.GraphRequest(
+//            graphPath: "",
+//            parameters: ["fields": "email, name"],
+//            tokenString: token,
+//            version: nil,
+//            httpMethod: .get)
+//
+//        // start request
+//        request.start(completionHandler: {connection, result, error in
+//            print("\(result)")
+//        })
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton!) {
+    func showEmailAddress() {
+        // access token
+        let accessToken = AccessToken.current
+        // safer method
+        guard (accessToken?.tokenString) != nil else { return }
+        
+        // auth credentials
+        let credentials = FacebookAuthProvider.credential(withAccessToken: (accessToken?.tokenString)!)
+        
+        // log into firebase here with user
+        Auth.auth().signIn(with: credentials) { User, Error in
+            if Error != nil {
+                print("Something went wrong with our FB user: ", Error as Any)
+                return
+                
+            }
+            
+            print("Successfully logged in with our user: ", User as Any)
+        }
+        
+        
+        
+        GraphRequest(graphPath: "me", parameters: ["fields": "email, first_name, last_name, gender, picture"]).start { connection, Result, Error in
+            if Error != nil {
+                print("Failed to start graph request:", Error as Any)
+                
+            }
+            
+            print(Result as Any)
+        }
+        
+        
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("User Logged Out")
         
     }
@@ -157,8 +202,8 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     let facebookBtn: UIButton = {
-        // Creates facebook button
-        let facebookBtn = UIButton()
+        // Creates facebook button and type downsize on button
+        let facebookBtn = UIButton(type: .system)
         facebookBtn.translatesAutoresizingMaskIntoConstraints = false
         facebookBtn.setTitle("Continue with Facebook", for: .normal)
         facebookBtn.backgroundColor = UIColor.blue
@@ -174,7 +219,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         facebookBtn.clipsToBounds = true
         facebookBtn.setImage(UIImage(named: "logo-tab"), for: .normal)
         facebookBtn.imageView?.contentMode = .scaleAspectFit
-        facebookBtn.tintColor = .white
+        facebookBtn.tintColor = .red
         facebookBtn.imageEdgeInsets = UIEdgeInsets(
             top: 0,
             left: -20,
@@ -193,12 +238,12 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         LoginManager().logIn(permissions: ["public_profile", "email"], from: self) { Result, Error in
             
             if Error != nil {
-                print(" Custom Facebook Login failed:", Error)
+                print(" Custom Facebook Login failed:", Error!)
                 return
                 
             }
             
-            print(Result?.token?.tokenString)
+            self.showEmailAddress()
             
         }
         
@@ -242,8 +287,8 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     let googleBtn: UIButton = {
-        // loginBtn here
-        let googleBtn = UIButton()
+        // loginBtn here and type downsize on button
+        let googleBtn = UIButton(type: .system)
         googleBtn.translatesAutoresizingMaskIntoConstraints = false
         googleBtn.setTitle("Continue with Google", for: .normal)
         googleBtn.backgroundColor = UIColor.green
@@ -260,7 +305,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         
         googleBtn.setImage(UIImage(named: "logo-tab"), for: .normal)
         googleBtn.imageView?.contentMode = .scaleAspectFit
-        googleBtn.tintColor = .white
+        googleBtn.tintColor = .red
         googleBtn.imageEdgeInsets = UIEdgeInsets(
             top: 0,
             left: -35,
