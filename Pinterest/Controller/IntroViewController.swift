@@ -86,8 +86,6 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             
             print(Result as Any)
         }
-        
-        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
@@ -107,10 +105,9 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                   let credential = GoogleAuthProvider.credential(withIDToken: (authentication.idToken)!, accessToken: (authentication.accessToken)!)
               // When user is signed in
                   Auth.auth().signIn(with: credential, completion: { (user, error) in
-                    if let error = error {
-                      print("Login error: \(error.localizedDescription)")
-                      return
-                    }
+                      let MainTabBarController = MainTabBarController()
+                      self.present(MainTabBarController, animated: true, completion: nil)
+                      
                   })
                 }
     
@@ -318,6 +315,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     @objc func buttonAction(sender: UIButton!) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signIn()
+        
 //        present(MainTabBarController(), animated: false, completion: nil)
     }
     
