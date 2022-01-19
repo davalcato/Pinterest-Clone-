@@ -49,28 +49,13 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
         if error != nil {
-            print(error)
+            print(error as Any)
             return
             
         }
         
         showEmailAddress()
-        
-        // get access token
-//        let token = result?.token?.tokenString
-//
-//        // create request
-//        let request = FBSDKLoginKit.GraphRequest(
-//            graphPath: "",
-//            parameters: ["fields": "email, name"],
-//            tokenString: token,
-//            version: nil,
-//            httpMethod: .get)
-//
-//        // start request
-//        request.start(completionHandler: {connection, result, error in
-//            print("\(result)")
-//        })
+
     }
     
     func showEmailAddress() {
@@ -93,8 +78,6 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             print("Successfully logged in with our user: ", User as Any)
         }
         
-        
-        
         GraphRequest(graphPath: "me", parameters: ["fields": "email, first_name, last_name, gender, picture"]).start { connection, Result, Error in
             if Error != nil {
                 print("Failed to start graph request:", Error as Any)
@@ -114,7 +97,22 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-    }
+        print("Google Sign In didSignInForUser")
+                  if let error = error {
+                    print(error.localizedDescription)
+                    return
+                  }
+
+                  guard let authentication = user.authentication else { return }
+                  let credential = GoogleAuthProvider.credential(withIDToken: (authentication.idToken)!, accessToken: (authentication.accessToken)!)
+              // When user is signed in
+                  Auth.auth().signIn(with: credential, completion: { (user, error) in
+                    if let error = error {
+                      print("Login error: \(error.localizedDescription)")
+                      return
+                    }
+                  })
+                }
     
     
     let gradientView: GradientView = {
@@ -177,7 +175,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     let appleBtn: UIButton = {
         // loginBtn here
-        let appleBtn = UIButton()
+        let appleBtn = UIButton(type: .system)
         appleBtn.translatesAutoresizingMaskIntoConstraints = false
         appleBtn.setTitle("Continue with Apple", for: .normal)
         appleBtn.backgroundColor = UIColor.black
@@ -248,8 +246,6 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         }
         
         
-        
-        
         // check if user is signed in
 //        if let token = AccessToken.current,
 //                !token.isExpired {
@@ -313,8 +309,6 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             right: 0)
         
         
-        
-        
         googleBtn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         
@@ -348,53 +342,13 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         super.viewDidLoad()
         
         
-        
-        
-        
-        
-        
-        
-        // check if user is signed in
-//        if let token = AccessToken.current,
-//                !token.isExpired {
-//
-//            let token = token.tokenString
-//
-//            // create request
-//            let request = FBSDKLoginKit.GraphRequest(
-//                graphPath: "me",
-//                parameters: ["fields": "email, name"],
-//                tokenString: token,
-//                version: nil,
-//                httpMethod: .get)
-//
-//            // start request
-//            request.start(completionHandler: {connection, result, error in
-//                print("\(result)")
-//            })
-//
-//                // User is logged in, do work such as go to next view controller.
-//        }
-//
-//        // if not signed in show loginButton
-//        else {
-//
-//            let loginButton = FBLoginButton()
-////            self.loginButtonDidLogOut(loginButton)
-//            loginButton.center = view.center
-//            loginButton.delegate = self
-//            // get permissions
-//            loginButton.permissions = ["public_profile", "email"]
-//
-//            view.addSubview(loginButton)
-//        }
-        
         // telling the instance that is the prompt to sign in
         GIDSignIn.sharedInstance().presentingViewController = self
         
         view.backgroundColor = .white
 
         setupElements()
+        
     }
     
     override func viewDidLayoutSubviews() {

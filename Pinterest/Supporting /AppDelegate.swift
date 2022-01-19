@@ -13,28 +13,47 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import FirebaseAuth
 
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-
-        GIDSignIn.sharedInstance()?.clientID = "865210992068-i18lunlsgbvrebc5ijror22hlidpbvcn.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance()?.delegate = self
         
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        GIDSignIn.sharedInstance()?.clientID = "865210992068-i18lunlsgbvrebc5ijror22hlidpbvcn.apps.googleusercontent.com"
+        // know when the user signed in with Google
+//        GIDSignIn.sharedInstance()?.delegate = self
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
+        
         return true
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        // once user is signed in print out email
-        print("User email: \(user.profile?.email ?? "No Email")")
-    }
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//
+//        print("Google Sign In didSignInForUser")
+//                  if let error = error {
+//                    print(error.localizedDescription)
+//                    return
+//                  }
+//
+//                  guard let authentication = user.authentication else { return }
+//                  let credential = GoogleAuthProvider.credential(withIDToken: (authentication.idToken)!, accessToken: (authentication.accessToken)!)
+//              // When user is signed in
+//                  Auth.auth().signIn(with: credential, completion: { (user, error) in
+//                    if let error = error {
+//                      print("Login error: \(error.localizedDescription)")
+//                      return
+//                    }
+//                  })
+//                }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
@@ -42,9 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     app,
                     open: url,
                     sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                    annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-        )
+                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
+//        GIDSignIn.sharedInstance().handle(url,
+//                                          sourceApplication: options,
+//                                          [UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
         return GIDSignIn.sharedInstance().handle(url)
+
     }
 
     // MARK: UISceneSession Lifecycle
