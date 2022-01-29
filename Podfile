@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :iOS, '15.0'
 
 target 'Pinterest' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -12,9 +12,10 @@ target 'Pinterest' do
   pod 'GoogleSignIn', '~> 5.0'
   pod 'SwiftGifOrigin', '~> 1.7.0'
   pod 'FBSDKLoginKit'
-  pod 'FacebookCore'
+  pod 'FacebookCore', '~> 4.14'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+  pod 'MBProgressHUD', '~> 1.2.0'
   
 
 

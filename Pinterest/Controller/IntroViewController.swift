@@ -13,6 +13,8 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import FirebaseAuth
 
+
+
 class GradientLayer: CAGradientLayer {
     var gradient: (start: CGPoint, end: CGPoint)? {
         didSet {
@@ -49,13 +51,13 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
         if error != nil {
-            print(error as Any)
-            return
             
+            print(error as Any)
+           
+            return
         }
         
         showEmailAddress()
-
     }
     
     func showEmailAddress() {
@@ -71,8 +73,8 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         Auth.auth().signIn(with: credentials) { User, Error in
             if Error != nil {
                 print("Something went wrong with our FB user: ", Error as Any)
-                return
                 
+                return
             }
             
             print("Successfully logged in with our user: ", User as Any)
@@ -81,7 +83,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         GraphRequest(graphPath: "me", parameters: ["fields": "email, first_name, last_name, gender, picture"]).start { connection, Result, Error in
             if Error != nil {
                 print("Failed to start graph request:", Error as Any)
-                
+                return
             }
             
             print(Result as Any)
@@ -89,6 +91,15 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        
+        let fbLoginManager = LoginManager()
+            fbLoginManager.logOut()
+            let cookies = HTTPCookieStorage.shared
+            let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
+            for cookie in facebookCookies! {
+                cookies.deleteCookie(cookie )
+            }
+        
         print("User Logged Out")
         
     }
@@ -108,8 +119,17 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                       let MainTabBarController = MainTabBarController()
                       self.present(MainTabBarController, animated: true, completion: nil)
                       
+                      if let err = error {
+                          print("Failed to create a Firebase User with Google account: ", err)
+                          return
+                      }
+                      
+                      _ = Auth.auth().currentUser!.uid
+                      print("Successfully logged into Firebase with Google")
+                      
                   })
                 }
+    
     
     
     let gradientView: GradientView = {
@@ -148,7 +168,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     let loginBtn: UIButton = {
         // loginBtn here
-        let loginBtn = UIButton()
+        let loginBtn = UIButton(type: .system)
         loginBtn.translatesAutoresizingMaskIntoConstraints = false
         loginBtn.setTitle("Log In", for: .normal)
         loginBtn.backgroundColor = UIColor.lightGray
@@ -222,24 +242,43 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             right: 0)
         
         
-        
         facebookBtn.addTarget(self, action: #selector(getFacebookUserInfo), for: .touchUpInside)
         
         return facebookBtn
     }()
     
-    @objc func getFacebookUserInfo() {
+    @objc func getFacebookUserInfo(sender : UIButton) {
+        _ = LoginManager()
         
         LoginManager().logIn(permissions: ["public_profile", "email"], from: self) { Result, Error in
             
-            if Error != nil {
-                print(" Custom Facebook Login failed:", Error!)
-                return
+            if Error == nil {
+                
+            let MainTabBarController = MainTabBarController()
+            self.present(MainTabBarController, animated: true, completion: nil)
                 
             }
             
             self.showEmailAddress()
             
+        }
+        
+         func signIntoFirebase() {
+             
+//             self.hud
+
+//             let authenticationToken = AccessToken.current?.authenticationToken else { return }
+//            let credential = FacebookAuthProvider.credential(withAccessToken: (accessToken?.tokenString)!)
+//             Auth.auth().signIn(with: credential) { user, err in
+//                 if let err = err {
+//                     print(err)
+//                     return
+//
+//                 }
+//
+//                 print("Successfully logged into Firebase")
+//             }
+
         }
         
         
@@ -356,7 +395,7 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     @objc func loginBtnTapped() {
-        present(MainTabBarController(), animated: false, completion: nil)
+//        present(MainTabBarController(), animated: false, completion: nil)
         
     }
     
@@ -365,6 +404,8 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         view.addSubview(btnStackView)
         view.addSubview(welcomeLbl)
         view.addSubview(logoImgView)
+        
+        
         
         headerImgView.addSubview(gradientView)
         view.addSubview(headerImgView)
@@ -477,6 +518,8 @@ extension UIView {
         constraints.forEach({$0.isActive = true})
     }
 }
+
+
 
 
 
