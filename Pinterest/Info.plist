@@ -75,9 +75,11 @@
 			</array>
 		</dict>
 	</dict>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-     <string>TRUE</string>
-     <key>FacebookAdvertiserIDCollectionEnabled</key>
-     <string>TRUE</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<string>TRUE</string>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<string>TRUE</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Allow &quot;Pinterest&quot; to track your activity across other companies&apos; apps and websites?</string>
 </dict>
 </plist>

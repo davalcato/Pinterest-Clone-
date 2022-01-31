@@ -30,14 +30,13 @@ class FeedViewController: UIViewController {
         tf.backgroundColor = #colorLiteral(red: 0.9588784575, green: 0.9528519511, blue: 0.9350754619, alpha: 1)
         tf.clipsToBounds = true
         tf.layer.cornerRadius = 10
-        
         // containview for search field
         let rightView = UIView(frame: CGRect(
             x: 0,
             y: 0,
             width: 38,
             height: -10))
-        // button
+        // add button as a subview
         let rightBtn = UIButton(type: .custom)
         rightBtn.setImage(UIImage(named: "camera-icon"), for: .normal)
         // set frame
@@ -90,7 +89,7 @@ class FeedViewController: UIViewController {
             bottom: nil,
             right: nil,
             topConstant: 0,
-            leftConstant: -0,
+            leftConstant: -3,
             bottomConstant: 0,
             rightConstant: 0,
             widthConstant: 17,
@@ -191,10 +190,11 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as?
             PinterestCell {
+            // get all the post 
             cell.mainImgView.image = posts[indexPath.row].image
             return cell
         }
-        // otherwise return UICollectionViewCell
+        // otherwise return cell cause of error
         return UICollectionViewCell()
     }
     // add new method

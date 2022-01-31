@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppTrackingTransparency
 
 class MainTabBarController: UITabBarController {
     
@@ -18,8 +19,44 @@ class MainTabBarController: UITabBarController {
             tabBar.standardAppearance = appearance
             tabBar.scrollEdgeAppearance = tabBar.standardAppearance
         tabBar.clipsToBounds = true
+       
+        // track user button
+        let button = UIButton(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: 200,
+            height: 50))
+        view.addSubview(button)
+        button.center = view.center
+        button.tintColor = .blue
+        button.setTitle("Get Permission", for: .normal)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        
         
         setupViewController()
+    }
+    
+    // tap button
+    @objc func didTapButton() {
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .notDetermined:
+                break
+            case .restricted:
+                break
+            case .denied:
+                break
+            case .authorized:
+                print("Allowed")
+                break
+            @unknown default:
+                break
+            }
+        }
+        
+        
+        print("Tap button")
+        
     }
     
     func setupViewController() {

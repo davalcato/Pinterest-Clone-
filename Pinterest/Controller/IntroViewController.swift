@@ -263,24 +263,6 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             
         }
         
-         func signIntoFirebase() {
-             
-//             self.hud
-
-//             let authenticationToken = AccessToken.current?.authenticationToken else { return }
-//            let credential = FacebookAuthProvider.credential(withAccessToken: (accessToken?.tokenString)!)
-//             Auth.auth().signIn(with: credential) { user, err in
-//                 if let err = err {
-//                     print(err)
-//                     return
-//
-//                 }
-//
-//                 print("Successfully logged into Firebase")
-//             }
-
-        }
-        
         
         // check if user is signed in
 //        if let token = AccessToken.current,
@@ -358,6 +340,8 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
 //        present(MainTabBarController(), animated: false, completion: nil)
     }
     
+    
+    
     // Add the buttons to a stack view
     lazy var btnStackView: UIStackView = {
         let s = UIStackView()
@@ -375,18 +359,20 @@ class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         
     }()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+       
         // telling the instance that is the prompt to sign in
         GIDSignIn.sharedInstance().presentingViewController = self
         
         view.backgroundColor = .white
-
         setupElements()
-        
     }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
