@@ -6,9 +6,26 @@
 //
 
 import UIKit
+import AVFoundation
 
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UISearchResultsUpdating, UITextFieldDelegate, UISearchBarDelegate {
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            
+            return
+        }
+        print(text)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.enablesReturnKeyAutomatically = false
+    }
+    
+    
+//    let searchBar = UISearchBar()
     
     // setup collectionView - lazy var to access self delegate
     lazy var collectionView: UICollectionView = {
@@ -30,15 +47,22 @@ class FeedViewController: UIViewController {
         tf.backgroundColor = #colorLiteral(red: 0.9588784575, green: 0.9528519511, blue: 0.9350754619, alpha: 1)
         tf.clipsToBounds = true
         tf.layer.cornerRadius = 10
+        
         // containview for search field
         let rightView = UIView(frame: CGRect(
-            x: 0,
-            y: 0,
+            x: 6,
+            y: 4,
             width: 38,
             height: -10))
+        
+        
         // add button as a subview
         let rightBtn = UIButton(type: .custom)
         rightBtn.setImage(UIImage(named: "camera-icon"), for: .normal)
+        
+//        rightBtn.addTarget(self, action: #selector(rightBtnCamara), for: .touchUpInside)
+        
+        
         // set frame
         rightBtn.frame = CGRect(
             x: 0,
@@ -60,6 +84,7 @@ class FeedViewController: UIViewController {
             rightConstant: 18,
             widthConstant: 25,
             heightConstant: 25)
+        
         rightView.centerYAnchor.constraint(equalTo: rightView.centerYAnchor).isActive = true
         // set the rightView property on the text
         tf.rightView = rightView
@@ -70,6 +95,8 @@ class FeedViewController: UIViewController {
             y: 0,
             width: 38,
             height: 25))
+        
+        
         // button
         let leftBtn = UIButton(type: .custom)
         leftBtn.setImage(UIImage(named: "search-icon"), for: .normal)
@@ -77,8 +104,8 @@ class FeedViewController: UIViewController {
         leftBtn.frame = CGRect(
             x: 0,
             y: 0,
-            width: 25,
-            height: 25)
+            width: -25,
+            height: -25)
         
         leftView.addSubview(leftBtn)
         
@@ -100,16 +127,25 @@ class FeedViewController: UIViewController {
         tf.leftView = leftView
         tf.leftViewMode = .always
         
+        
         return tf
         
     }()
+    
     // add chat button
-    let chatBtn: UIButton = {
-        let btn = UIButton()
+    lazy var chatBtn: UIButton = {
+        let btn = UIButton(type: .custom)
         btn.setImage(UIImage(named: "chatbubble"), for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(chatbubbleButton), for: .touchUpInside)
+        
         
         return btn
     }()
+    
+    @objc func chatbubbleButton() {
+        print("Button tapped")
+     }
     
     // call a method here
     let posts = PostProvider.GetPosts()
@@ -140,12 +176,14 @@ class FeedViewController: UIViewController {
             widthConstant: 0,
             heightConstant: 0)
         
+        
     // navBar into separate function
     func setupNavBar() {
+        
         guard let navBar = navigationController?.navigationBar else { return }
         
         navBar.isTranslucent = false
-        navBar.backgroundColor = .white
+        navBar.backgroundColor = .red
         
         // add search as subview
         navBar.addSubview(searchTF)
@@ -170,9 +208,9 @@ class FeedViewController: UIViewController {
             bottom: navBar.bottomAnchor,
             right: chatBtn.leftAnchor,
             topConstant: 5,
-            leftConstant: 10,
+            leftConstant: 8,
             bottomConstant: 5,
-            rightConstant: 10,
+            rightConstant: 8,
             widthConstant: 0,
             heightConstant: 0)
         
@@ -229,5 +267,7 @@ extension FeedViewController: PinterestLayoutDelegate {
         return posts[indexPath.row].image.size.height / 4
     }
 }
+
+
 
 

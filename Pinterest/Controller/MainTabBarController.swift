@@ -8,18 +8,25 @@
 import UIKit
 import AppTrackingTransparency
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UIScrollViewDelegate, UITabBarControllerDelegate, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.delegate = self
+        self.tabBar.tintColor = .red
+        
+        
+//        scrollViewer.delegate = self
         // this code fixes the tabBar color
         let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = .white
             tabBar.standardAppearance = appearance
             tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        
         tabBar.clipsToBounds = true
-       
+        
         // track user button
         let button = UIButton(frame: CGRect(
             x: 0,
@@ -29,7 +36,7 @@ class MainTabBarController: UITabBarController {
         view.addSubview(button)
         button.center = view.center
         button.tintColor = .blue
-        button.setTitle("Get Permission", for: .normal)
+//        button.setTitle("Get Permission", for: .normal)
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
         
@@ -45,6 +52,7 @@ class MainTabBarController: UITabBarController {
             case .restricted:
                 break
             case .denied:
+                print("Denied access")
                 break
             case .authorized:
                 print("Allowed")
@@ -53,11 +61,30 @@ class MainTabBarController: UITabBarController {
                 break
             }
         }
-        
-        
         print("Tap button")
-        
     }
+    
+//    private func createSpinnerFooter() -> UIView {
+//        let footerView = UIView(frame: CGRect(
+//            x: 0,
+//            y: 0,
+//            width: view.frame.size.width,
+//            height: 100))
+//        
+//        let spinner = UIActivityIndicatorView()
+//        spinner.center = footerView.center
+//        footerView.addSubview(spinner)
+//        spinner.startAnimating()
+//        
+//        return footerView
+//        
+//    }
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("Did scroll")
+    }
+    
     
     func setupViewController() {
         // for each the controller displayed
@@ -82,6 +109,7 @@ class MainTabBarController: UITabBarController {
         
         ]
     }
+    
     // generate fake navigation controllers
     func generateNavControllers(title: String, image: UIImage) -> UINavigationController {
         let vc = UIViewController()
@@ -96,10 +124,16 @@ class MainTabBarController: UITabBarController {
         
         ], for: .selected)
         return navController
-        
     }
-    
 }
+
+
+
+
+
+
+
+
 
 
 

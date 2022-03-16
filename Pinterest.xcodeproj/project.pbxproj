@@ -19,7 +19,6 @@
 		755F8C9D2725E60A00398ADD /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 755F8C9C2725E60A00398ADD /* Assets */; };
 		75742384276EA08600C98DFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75742383276EA08600C98DFF /* Post.swift */; };
 		75742388276EA90E00C98DFF /* PinterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75742387276EA90E00C98DFF /* PinterestCell.swift */; };
-		75810222277E62FF0038C49D /* giphy.gif in Sources */ = {isa = PBXBuildFile; fileRef = 75810221277E62990038C49D /* giphy.gif */; };
 		75A1F60E2740546400E4170A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1F60D2740546300E4170A /* MainTabBarController.swift */; };
 		75A1F61027405A4300E4170A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1F60F27405A4300E4170A /* FeedViewController.swift */; };
 		75B49E5B277D20E7001A1A5C /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 75B49E5A277D200E001A1A5C /* GoogleService-Info.plist */; };
@@ -72,7 +71,6 @@
 		755F8C9C2725E60A00398ADD /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		75742383276EA08600C98DFF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		75742387276EA90E00C98DFF /* PinterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestCell.swift; sourceTree = "<group>"; };
-		75810221277E62990038C49D /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		758D57052790FBEE00557264 /* PinterestDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinterestDebug.entitlements; sourceTree = "<group>"; };
 		75A1F60D2740546300E4170A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		75A1F60F27405A4300E4170A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -159,10 +157,10 @@
 			children = (
 				758D57052790FBEE00557264 /* PinterestDebug.entitlements */,
 				75742382276EA06000C98DFF /* Models */,
-				755F8C9C2725E60A00398ADD /* Assets */,
 				75742381276EA05A00C98DFF /* View */,
 				75742380276EA04900C98DFF /* Controller */,
 				75B5D463275C140000AA3148 /* Helpers */,
+				755F8C9C2725E60A00398ADD /* Assets */,
 				75742385276EA26200C98DFF /* Supporting  */,
 				75742386276EA7C900C98DFF /* Work */,
 				75595B552725C20600DBB009 /* Info.plist */,
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				75B49E5A277D200E001A1A5C /* GoogleService-Info.plist */,
-				75810221277E62990038C49D /* giphy.gif */,
 				75595B4B2725C20100DBB009 /* IntroViewController.swift */,
 				75A1F60D2740546300E4170A /* MainTabBarController.swift */,
 				75A1F60F27405A4300E4170A /* FeedViewController.swift */,
@@ -530,7 +527,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75810222277E62FF0038C49D /* giphy.gif in Sources */,
 				75B49E5B277D20E7001A1A5C /* GoogleService-Info.plist in Sources */,
 				75D62892276D4E2000125509 /* GIFImageView.swift in Sources */,
 				75D62895276D50AC00125509 /* UIColorExtension.swift in Sources */,
