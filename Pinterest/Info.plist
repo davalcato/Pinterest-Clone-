@@ -81,5 +81,9 @@
 	<string>TRUE</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Allow &quot;Pinterest&quot; to track your activity across other companies&apos; apps and websites?</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow the Pinterest App to take a photo!</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow the Pinterest App to record a Video!</string>
 </dict>
 </plist>

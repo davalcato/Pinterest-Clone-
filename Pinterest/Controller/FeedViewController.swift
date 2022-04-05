@@ -9,7 +9,16 @@ import UIKit
 import AVFoundation
 
 
-class FeedViewController: UIViewController, UISearchResultsUpdating, UITextFieldDelegate, UISearchBarDelegate {
+class FeedViewController: UIViewController, UISearchResultsUpdating, UITextFieldDelegate, UISearchBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    //Capture Session
+    var session: AVCaptureSession?
+    
+    // Photo Output
+    let output = AVCapturePhotoOutput()
+    
+    // Video Preview
+    var previewLayer = AVCapturePhotoOutput()
     
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -146,7 +155,11 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
     
     
     
-    @objc func rightBtnAction(_ sender: UIButton) {
+    @objc func rightBtnAction(_ sender: Any) {
+//        output.capturePhoto(with: AVCapturePhotoSettings(),
+//                            delegate: self)
+        
+        
         print("Button tapped")
      }
     
@@ -170,14 +183,10 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
     let posts = PostProvider.GetPosts()
     
     override func viewDidLoad() {
+        checkCameraPermissions()
+//        view.layer.addSublayer(previewLayer)
+        
         super.viewDidLoad()
-        
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.rightBtnAction(notification:)), name: Notification.Name("rightBtn"), object: nil)
-        
-        
-//        let testUIBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera-icon"), style: .plain, target: self, action: #selector(self.rightBtnCamara))
-//                self.navigationItem.leftBarButtonItem  = testUIBarButtonItem
         
         view.backgroundColor = .white
         
@@ -231,9 +240,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         rightBtn.centerYAnchor.constraint(equalTo: navBar.centerYAnchor).isActive = true
         
         
-        
-        
-        
         chatBtn.constraint(
             top: nil,
             left: nil,
@@ -259,6 +265,74 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             widthConstant: 0,
             heightConstant: 0)
         
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Take up the entire view of phone
+//        previewLayer.frame = view.bounds
+        
+    }
+    
+    // Request permission for the camera
+ func checkCameraPermissions() {
+     switch AVCaptureDevice.authorizationStatus(for: .video) {
+     case .notDetermined:
+         // Request access
+         AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+             guard granted else {
+                 return
+             }
+             // If it was granted then call setUpCamera on the main thread
+             DispatchQueue.main.async {
+                 // adjust the UI here
+                 self?.setUpCamera()
+             }
+         }
+     case .restricted:
+         break
+     case .denied:
+         break
+     case .authorized:
+         setUpCamera()
+     default:
+         break
+     }
+
+ }
+    
+    func setUpCamera() {
+        let session = AVCaptureSession()
+        // Try to get the device we want to add
+        if let device = AVCaptureDevice.default(for: .video) {
+            // if we get device try and add it
+            do {
+                // create input from device
+                let input = try AVCaptureDeviceInput(device: device)
+                if session.canAddInput(input) {
+                    session.addInput(input)
+                    
+                }
+                // add output
+                if session.canAddOutput(output) {
+                    session.addOutput(output)
+                }
+                // add session to preview layer
+//                previewLayer.videoGravity = .resizeAspectFill
+//                previewLayer.session = session
+                // start session
+                session.startRunning()
+                // retain session into global
+                self.session = session
+                
+            }
+            // After we have the device
+            catch {
+                // error handling
+                print(error)
+                
+            }
         }
     }
 }
@@ -311,6 +385,33 @@ extension FeedViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         return posts[indexPath.row].image.size.height / 4
     }
+}
+
+extension FeedViewController: AVCapturePhotoCaptureDelegate {
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        // Convert to data back from photo
+        guard let data = photo.fileDataRepresentation() else {
+            
+            return
+        }
+        // Add to the UI to see the captured photo
+        let image = UIImage(data: data)
+        
+        // Created a single image view
+        let imageView = UIImageView(image: image)
+        
+        // assign the contentMode
+        imageView.contentMode = .scaleAspectFit
+        
+        // Add a frame
+        imageView.frame = view.bounds
+        
+        // add to subview
+        view.addSubview(imageView)
+    }
+    
 }
 
 
