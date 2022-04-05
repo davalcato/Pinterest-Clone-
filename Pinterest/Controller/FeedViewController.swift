@@ -27,7 +27,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
     
 //    let searchBar = UISearchBar()
     
-    // setup collectionView - lazy var to access self delegate
+    // setup the collectionView - lazy var to access self delegate
     lazy var collectionView: UICollectionView = {
         let layout = PinterestLayout()
         layout.delegate = self
@@ -48,54 +48,56 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         tf.clipsToBounds = true
         tf.layer.cornerRadius = 10
         
-        // containview for search field
+        // containerView for search field
         let rightView = UIView(frame: CGRect(
             x: 6,
             y: 4,
             width: 38,
             height: -10))
         
-        
+//    func ButtonCreate () {
         // add button as a subview
-        let rightBtn = UIButton(type: .custom)
-        rightBtn.setImage(UIImage(named: "camera-icon"), for: .normal)
+//        let rightBtn = UIButton(type: .custom)
+//        rightBtn.setImage(UIImage(named: "camera-icon"), for: .normal)
+//        rightBtn.isEnabled = true
+//        rightBtn.isUserInteractionEnabled = true
+//        rightBtn.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
+//
+//        rightView.addSubview(rightBtn)
+//
+//        // set frame
+//        rightBtn.frame = CGRect(
+//            x: 0,
+//            y: 0,
+//            width: 25,
+//            height: 25)
+//
+//        // anchor right button
+//        rightBtn.constraint(
+//            top: nil,
+//            left: nil,
+//            bottom: nil,
+//            right: rightView.rightAnchor,
+//            topConstant: 0,
+//            leftConstant: 8,
+//            bottomConstant: 5,
+//            rightConstant: 8,
+//            widthConstant: 25,
+//            heightConstant: 25)
+//
+//        rightView.centerYAnchor.constraint(equalTo: rightView.centerYAnchor).isActive = true
+//
+//        // set the rightView property on the text to make it appear
+//        tf.rightView = rightView
+//        tf.rightViewMode = .always
         
-//        rightBtn.addTarget(self, action: #selector(rightBtnCamara), for: .touchUpInside)
         
-        
-        // set frame
-        rightBtn.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: 25,
-            height: 25)
-        
-        rightView.addSubview(rightBtn)
-        
-        // anchor right button
-        rightBtn.constraint(
-            top: nil,
-            left: nil,
-            bottom: nil,
-            right: rightView.rightAnchor,
-            topConstant: 0,
-            leftConstant: 0,
-            bottomConstant: 5,
-            rightConstant: 18,
-            widthConstant: 25,
-            heightConstant: 25)
-        
-        rightView.centerYAnchor.constraint(equalTo: rightView.centerYAnchor).isActive = true
-        // set the rightView property on the text
-        tf.rightView = rightView
-        tf.rightViewMode = .always
-        // containview
+        // containerView
         let leftView = UIView(frame: CGRect(
             x: 0,
             y: 0,
             width: 38,
             height: 25))
-        
         
         // button
         let leftBtn = UIButton(type: .custom)
@@ -116,7 +118,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             bottom: nil,
             right: nil,
             topConstant: 0,
-            leftConstant: -3,
+            leftConstant: 4,
             bottomConstant: 0,
             rightConstant: 0,
             widthConstant: 17,
@@ -131,6 +133,22 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         return tf
         
     }()
+    
+    lazy var rightBtn: UIButton = {
+        let rightBtn = UIButton(type: .custom)
+        rightBtn.setImage(UIImage(named: "camera-icon"), for: .normal)
+        rightBtn.translatesAutoresizingMaskIntoConstraints = false
+        rightBtn.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
+        
+        
+        return rightBtn
+    }()
+    
+    
+    
+    @objc func rightBtnAction(_ sender: UIButton) {
+        print("Button tapped")
+     }
     
     // add chat button
     lazy var chatBtn: UIButton = {
@@ -147,11 +165,19 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         print("Button tapped")
      }
     
+    
     // call a method here
     let posts = PostProvider.GetPosts()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.rightBtnAction(notification:)), name: Notification.Name("rightBtn"), object: nil)
+        
+        
+//        let testUIBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera-icon"), style: .plain, target: self, action: #selector(self.rightBtnCamara))
+//                self.navigationItem.leftBarButtonItem  = testUIBarButtonItem
         
         view.backgroundColor = .white
         
@@ -188,6 +214,25 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         // add search as subview
         navBar.addSubview(searchTF)
         navBar.addSubview(chatBtn)
+        navBar.addSubview(rightBtn)
+        
+        
+        rightBtn.constraint(
+            top: nil,
+            left: navBar.leftAnchor,
+            bottom: nil,
+            right: nil,
+            topConstant: 0,
+            leftConstant: 5,
+            bottomConstant: 0,
+            rightConstant: 5,
+            widthConstant: 25,
+            heightConstant: 25)
+        rightBtn.centerYAnchor.constraint(equalTo: navBar.centerYAnchor).isActive = true
+        
+        
+        
+        
         
         chatBtn.constraint(
             top: nil,
@@ -195,22 +240,22 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             bottom: nil,
             right: navBar.rightAnchor,
             topConstant: 0,
-            leftConstant: 0,
+            leftConstant: 5,
             bottomConstant: 0,
-            rightConstant: 18,
+            rightConstant: 10,
             widthConstant: 25,
             heightConstant: 25)
         chatBtn.centerYAnchor.constraint(equalTo: navBar.centerYAnchor).isActive = true
         
         searchTF.constraint(
             top: navBar.topAnchor,
-            left: navBar.leftAnchor,
+            left: rightBtn.leftAnchor,
             bottom: navBar.bottomAnchor,
             right: chatBtn.leftAnchor,
             topConstant: 5,
-            leftConstant: 8,
+            leftConstant: 30,
             bottomConstant: 5,
-            rightConstant: 8,
+            rightConstant: 5,
             widthConstant: 0,
             heightConstant: 0)
         
@@ -267,6 +312,8 @@ extension FeedViewController: PinterestLayoutDelegate {
         return posts[indexPath.row].image.size.height / 4
     }
 }
+
+
 
 
 
