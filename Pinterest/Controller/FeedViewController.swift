@@ -7,7 +7,7 @@
 
 import UIKit
 import AVFoundation
-
+import MessageKit
 
 class FeedViewController: UIViewController, UISearchResultsUpdating, UITextFieldDelegate, UISearchBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

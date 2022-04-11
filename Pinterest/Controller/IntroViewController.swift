@@ -46,6 +46,7 @@ extension UIView: GradientProvider {
     
 }
 
+@available(iOS 15.0, *)
 class IntroViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {

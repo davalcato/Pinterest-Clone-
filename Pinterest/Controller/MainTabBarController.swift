@@ -8,8 +8,10 @@
 import UIKit
 import AppTrackingTransparency
 
+@available(iOS 15.0, *)
 class MainTabBarController: UITabBarController, UIScrollViewDelegate, UITabBarControllerDelegate, UITableViewDelegate {
     
+//    @available(iOS 13.0, *)
     override func viewDidLoad() {
         super.viewDidLoad()
         
