@@ -21,6 +21,7 @@
 		75742388276EA90E00C98DFF /* PinterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75742387276EA90E00C98DFF /* PinterestCell.swift */; };
 		75A1F60E2740546400E4170A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1F60D2740546300E4170A /* MainTabBarController.swift */; };
 		75A1F61027405A4300E4170A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1F60F27405A4300E4170A /* FeedViewController.swift */; };
+		75A7CDE52804FFD4008043F6 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A7CDE42804FFD2008043F6 /* ChatViewController.swift */; };
 		75B49E5B277D20E7001A1A5C /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 75B49E5A277D200E001A1A5C /* GoogleService-Info.plist */; };
 		75B5D464275C140100AA3148 /* Helpers in Resources */ = {isa = PBXBuildFile; fileRef = 75B5D463275C140000AA3148 /* Helpers */; };
 		75B5D4682760080200AA3148 /* PostProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B5D4672760080200AA3148 /* PostProvider.swift */; };
@@ -74,6 +75,7 @@
 		758D57052790FBEE00557264 /* PinterestDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinterestDebug.entitlements; sourceTree = "<group>"; };
 		75A1F60D2740546300E4170A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		75A1F60F27405A4300E4170A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		75A7CDE42804FFD2008043F6 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		75B49E5A277D200E001A1A5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75B5D463275C140000AA3148 /* Helpers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Helpers; sourceTree = "<group>"; };
 		75B5D4672760080200AA3148 /* PostProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProvider.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				75595B4B2725C20100DBB009 /* IntroViewController.swift */,
 				75A1F60D2740546300E4170A /* MainTabBarController.swift */,
 				75A1F60F27405A4300E4170A /* FeedViewController.swift */,
+				75A7CDE42804FFD2008043F6 /* ChatViewController.swift */,
 				75D6288027655A0F00125509 /* DetailViewController.swift */,
 			);
 			path = Controller;
@@ -543,6 +546,7 @@
 				75742388276EA90E00C98DFF /* PinterestCell.swift in Sources */,
 				75595B4A2725C20100DBB009 /* SceneDelegate.swift in Sources */,
 				75D6288127655A0F00125509 /* DetailViewController.swift in Sources */,
+				75A7CDE52804FFD4008043F6 /* ChatViewController.swift in Sources */,
 				75D6288E27656F8700125509 /* CCSwipBackPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

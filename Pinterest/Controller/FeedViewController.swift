@@ -175,6 +175,10 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
     }()
     
     @objc func chatbubbleButton() {
+        
+        let vc = ChatViewController()
+        self.navigationController?.pushViewController(vc,animated:true)
+        
         print("Button tapped")
      }
     
