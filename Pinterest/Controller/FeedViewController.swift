@@ -272,6 +272,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         }
     }
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // Take up the entire view of phone
