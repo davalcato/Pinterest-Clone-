@@ -46,8 +46,8 @@ class ChatViewController: UIViewController {
         let btn = UIButton()
         btn.setImage(UIImage(named: "back"), for: .normal)
         btn.contentEdgeInsets = UIEdgeInsets(
-            top: 8,
-            left: 8,
+            top: 2,
+            left: 4,
             bottom: 8,
             right: 8)
         btn.addTarget(self, action: #selector(backBtnTapped), for: .touchUpInside)
@@ -107,11 +107,11 @@ class ChatViewController: UIViewController {
             left: view.leftAnchor,
             bottom: nil,
             right: nil,
-            topConstant: 40,
+            topConstant: 30,
             leftConstant: 18,
             bottomConstant: 0,
             rightConstant: 0,
-            widthConstant: 38,
+            widthConstant: 28,
             heightConstant: 38)
         
         imageView.constraint(
