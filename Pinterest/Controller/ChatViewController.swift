@@ -88,6 +88,8 @@ class ChatViewController: UIViewController {
         
         view.backgroundColor = .white
         setupElements()
+        
+        
     }
     // add the selector method
     @objc func backBtnTapped() {
