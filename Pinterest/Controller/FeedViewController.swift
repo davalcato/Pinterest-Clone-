@@ -159,6 +159,16 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
 //        output.capturePhoto(with: AVCapturePhotoSettings(),
 //                            delegate: self)
         
+        let alert = UIAlertController.init(title: "Pinterest would like to access the camera!", message: "Please allow to take a photo.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: { (_) in
+            }))
+
+            alert.addAction(UIAlertAction.init(title: "Settings", style: .default, handler: { (_) in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+            }))
+
+            present(alert, animated: true)
+        
         
         print("Button tapped")
      }
