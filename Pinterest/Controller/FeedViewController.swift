@@ -157,8 +157,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         return rightBtn
     }()
     
-    
-    
     @objc func cameraBtnAction(_ sender: Any) {
 //        output.capturePhoto(with: AVCapturePhotoSettings(),
 //                            delegate: self)
@@ -228,14 +226,20 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
 //                [:], completionHandler:nil)
 //
 //            }
+//
 //            let cancelAction = UIAlertAction(title: "Cancel",
 //                                             style: .default) { [weak self] _ in
 //                self?.locationServicesNeededState()
 //            }
 //
+//            alert.addAction(settingsAction)
+//            alert.addAction(cancelAction)
 //
-//        }
-        
+//            alert.preferredAction = settingsAction
+//
+//            present(alert, animated: true, completion: nil
+//        })
+                    
         collectionView.constraint(
             top: view.topAnchor,
             left: view.leftAnchor,
@@ -301,13 +305,22 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             rightConstant: 5,
             widthConstant: 0,
             heightConstant: 0)
-        
+                
         }
+                    
+//    func locationServicesNeededState() {
+//        self.statusLabel.text
+//
+//        }
     }
     // Configuring Location services
     private func initializedLocationServices() {
-        // Set viewController as delegate of core location manager
+        // Set FeedViewController as delegate of core location manager
         locationService.delegate = self
+        // Enable background updates
+        locationService.allowsBackgroundLocationUpdates = true
+        // Let user know the app is retrieving location information while in background
+        locationService.showsBackgroundLocationIndicator = true
         
         // Check if location services in enable
         guard CLLocationManager.locationServicesEnabled() else {
@@ -353,7 +366,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
      }
 
  }
-    
     func setUpCamera() {
         let session = AVCaptureSession()
         // Try to get the device we want to add
@@ -479,8 +491,12 @@ extension FeedViewController: CLLocationManagerDelegate {
             print("restricted")
         case .denied:
             print("denied")
+            // An alert prompting the user about the location services
+//            promptForAuthorization()
         case .authorizedAlways:
             print("authorizedAlways")
+            // Update the location
+            locationService.startUpdatingLocation()
         case .authorizedWhenInUse:
             print("authorizedWhenInUse")
         case .authorized:
@@ -499,23 +515,7 @@ extension FeedViewController: CLLocationManagerDelegate {
 
 
 
-//extension UIAlertController {
-//
-//    func createSettingsAlertController(title: String, message: String) {
-//
-//      let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//
-//      let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
-//      let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (UIAlertAction) in
-//          UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)! as URL, options: [:], completionHandler: nil)
-//      }
-//
-//      alertController.addAction(cancelAction)
-//      alertController.addAction(settingsAction)
-//      self.present(alertController, animated: true, completion: nil)
-//
-//   }
-//}
+
 
 
 

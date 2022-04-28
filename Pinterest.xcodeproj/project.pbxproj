@@ -725,6 +725,7 @@
 				INFOPLIST_KEY_CFBundleExecutable = Pinterest;
 				INFOPLIST_KEY_CFBundleName = Pinterest;
 				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow the Pinterest App to take a photo!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -757,6 +758,7 @@
 				INFOPLIST_KEY_CFBundleExecutable = Pinterest;
 				INFOPLIST_KEY_CFBundleName = Pinterest;
 				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow the Pinterest App to take a photo!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
