@@ -8,8 +8,12 @@
 import UIKit
 import AVFoundation
 import MessageKit
+import CoreLocation
 
 class FeedViewController: UIViewController, UISearchResultsUpdating, UITextFieldDelegate, UISearchBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // Core location instance
+    let locationService = CLLocationManager()
     
     //Capture Session
     var session: AVCaptureSession?
@@ -147,7 +151,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         let rightBtn = UIButton(type: .custom)
         rightBtn.setImage(UIImage(named: "camera-icon"), for: .normal)
         rightBtn.translatesAutoresizingMaskIntoConstraints = false
-        rightBtn.addTarget(self, action: #selector(rightBtnAction), for: .touchUpInside)
+        rightBtn.addTarget(self, action: #selector(cameraBtnAction), for: .touchUpInside)
         
         
         return rightBtn
@@ -155,7 +159,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
     
     
     
-    @objc func rightBtnAction(_ sender: Any) {
+    @objc func cameraBtnAction(_ sender: Any) {
 //        output.capturePhoto(with: AVCapturePhotoSettings(),
 //                            delegate: self)
         
@@ -198,6 +202,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
     
     override func viewDidLoad() {
         checkCameraPermissions()
+        initializedLocationServices()
 //        view.layer.addSublayer(previewLayer)
         
         super.viewDidLoad()
@@ -212,6 +217,24 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         
         // add the collectionView as a subview
         view.addSubview(collectionView)
+        
+//        func promptForAuthorization() {
+//            let alert = UIAlertController(title: "Location access is needed to get your current location",
+//                                          message: "Please allow location access",
+//                                          preferredStyle: .alert)
+//            let settingsAction = UIAlertAction(title: "Settings",
+//                                               style: .default) { _ in
+//                UIApplication.shared.openURL(UIApplication.openSettingsURLString), options:
+//                [:], completionHandler:nil)
+//
+//            }
+//            let cancelAction = UIAlertAction(title: "Cancel",
+//                                             style: .default) { [weak self] _ in
+//                self?.locationServicesNeededState()
+//            }
+//
+//
+//        }
         
         collectionView.constraint(
             top: view.topAnchor,
@@ -280,6 +303,20 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             heightConstant: 0)
         
         }
+    }
+    // Configuring Location services
+    private func initializedLocationServices() {
+        // Set viewController as delegate of core location manager
+        locationService.delegate = self
+        
+        // Check if location services in enable
+        guard CLLocationManager.locationServicesEnabled() else {
+            // if its not enable then return
+            return
+        }
+        // Request locationServices
+        locationService.requestAlwaysAuthorization()
+        
     }
     
     
@@ -428,6 +465,57 @@ extension FeedViewController: AVCapturePhotoCaptureDelegate {
     }
     
 }
+
+extension FeedViewController: CLLocationManagerDelegate {
+    @available(iOS 14.0, *)
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        // Retrieve the authoratization status
+        let status = manager.authorizationStatus
+        
+        switch status {
+        case .notDetermined:
+            print("notDetermined")
+        case .restricted:
+            print("restricted")
+        case .denied:
+            print("denied")
+        case .authorizedAlways:
+            print("authorizedAlways")
+        case .authorizedWhenInUse:
+            print("authorizedWhenInUse")
+        case .authorized:
+            print("authorized")
+        default:
+            print("unknown")
+        }
+        
+    }
+    // Location information
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+    }
+    
+}
+
+
+
+//extension UIAlertController {
+//
+//    func createSettingsAlertController(title: String, message: String) {
+//
+//      let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//
+//      let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+//      let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (UIAlertAction) in
+//          UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)! as URL, options: [:], completionHandler: nil)
+//      }
+//
+//      alertController.addAction(cancelAction)
+//      alertController.addAction(settingsAction)
+//      self.present(alertController, animated: true, completion: nil)
+//
+//   }
+//}
 
 
 

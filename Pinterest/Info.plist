@@ -85,5 +85,9 @@
 	<string>Please allow the Pinterest App to take a photo!</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Please allow the Pinterest App to record a Video!</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To track the user&apos;s location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To track the user&apos;s location</string>
 </dict>
 </plist>
