@@ -21,14 +21,27 @@ class PinterestCell: UICollectionViewCell {
     }()
     
     // more button
-    let moreImgView: UIImageView = {
+    lazy var moreImgView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "more")?.withRenderingMode(.alwaysTemplate)
         iv.tintColor = UIColor.lightGray
+        iv.isUserInteractionEnabled = true
+        iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moreImgViewAction)))
+        
+        
+//        moreImgView.addTarget(self, action: #selector(moreImgViewAction), for: .touchUpInside)
+        
         
         return iv
         
     }()
+    
+    @objc func moreImgViewAction(_ sender: Any) {
+
+        print("Button tapped")
+    }
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -63,13 +63,15 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To track the user's location.</string>
+	<string>To track the user&apos;s location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To track the user's location</string>
+	<string>To track the user&apos;s location</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Please allow the Pinterest App to record a Video!</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Allow "Pinterest" to track your activity across other companies' apps and websites?</string>
+	<string>Allow &quot;Pinterest&quot; to track your activity across other companies&apos; apps and websites?</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Allow &quot;Now&quot; to track your activity across other companies&apos; apps and websites?</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

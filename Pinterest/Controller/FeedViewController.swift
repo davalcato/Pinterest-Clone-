@@ -13,7 +13,7 @@ import CoreLocation
 class FeedViewController: UIViewController, UISearchResultsUpdating, UITextFieldDelegate, UISearchBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Core location instance
-    let locationService = CLLocationManager()
+    let locationServices = CLLocationManager()
     
     //Capture Session
     var session: AVCaptureSession?
@@ -316,11 +316,11 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
     // Configuring Location services
     private func initializedLocationServices() {
         // Set FeedViewController as delegate of core location manager
-        locationService.delegate = self
+        locationServices.delegate = self
         // Enable background updates
-        locationService.allowsBackgroundLocationUpdates = true
+        locationServices.allowsBackgroundLocationUpdates = true
         // Let user know the app is retrieving location information while in background
-        locationService.showsBackgroundLocationIndicator = true
+        locationServices.showsBackgroundLocationIndicator = true
         
         // Check if location services in enable
         guard CLLocationManager.locationServicesEnabled() else {
@@ -328,7 +328,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             return
         }
         // Request locationServices
-        locationService.requestAlwaysAuthorization()
+        locationServices.requestAlwaysAuthorization()
         
     }
     
@@ -482,9 +482,9 @@ extension FeedViewController: CLLocationManagerDelegate {
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         // Retrieve the authoratization status
-        let status = manager.authorizationStatus
+        let CLLocationManager = manager.authorizationStatus
         
-        switch status {
+        switch CLLocationManager {
         case .notDetermined:
             print("notDetermined")
         case .restricted:
@@ -496,7 +496,7 @@ extension FeedViewController: CLLocationManagerDelegate {
         case .authorizedAlways:
             print("authorizedAlways")
             // Update the location
-            locationService.startUpdatingLocation()
+            locationServices.startUpdatingLocation()
         case .authorizedWhenInUse:
             print("authorizedWhenInUse")
         case .authorized:
