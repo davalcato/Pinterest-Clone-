@@ -29,6 +29,7 @@ class PinterestCell: UICollectionViewCell {
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moreImgViewAction)))
         
         
+        
 //        moreImgView.addTarget(self, action: #selector(moreImgViewAction), for: .touchUpInside)
         
         
@@ -36,9 +37,15 @@ class PinterestCell: UICollectionViewCell {
         
     }()
     
-    @objc func moreImgViewAction(_ sender: Any) {
-
-        print("Button tapped")
+    @objc func moreImgViewAction() {
+        // show menu
+            let blackView = UIView()
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            // Add has a subview to viewController view
+        window?.addSubview(blackView)
+        blackView.frame = window!.frame
+            print("Button tapped")
+        
     }
     
     
@@ -82,6 +89,7 @@ class PinterestCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
 
 
