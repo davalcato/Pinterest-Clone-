@@ -11,6 +11,15 @@ class SettingsLauncher: NSObject {
     // show menu
     let blackView = UIView()
     
+    // Create local viable
+    let collectionView: UICollectionView = {
+        // layout
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return cv
+        
+    }()
+    
      func showSettings() {
         if let window = UIApplication.shared.windows.first {
         
@@ -22,6 +31,21 @@ class SettingsLauncher: NSObject {
         
             // Add has a subview to viewController view
             window.addSubview(blackView)
+            window.addSubview(collectionView)
+            
+            // change location of popup to bottom
+            let height: CGFloat = 300
+            let y = window.frame.height - height
+            
+            
+            // frame of collectioView
+            collectionView.frame = CGRect(
+                x: 0,
+                y: y,
+                width: window.frame.width,
+                height: height)
+            
+            
             blackView.frame = window.frame
         // this calls blackview to screen
         blackView.alpha = 0
