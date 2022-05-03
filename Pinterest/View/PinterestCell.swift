@@ -36,12 +36,17 @@ class PinterestCell: UICollectionViewCell {
         return iv
         
     }()
+    // show menu
+        let blackView = UIView()
     
     @objc func moreImgViewAction() {
-        
-        // show menu
-            let blackView = UIView()
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        // dismiss blackview
+        blackView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleDismiss)))
+        
             // Add has a subview to viewController view
         window?.addSubview(blackView)
         blackView.frame = window!.frame
@@ -51,10 +56,16 @@ class PinterestCell: UICollectionViewCell {
         // animate the black view onto screen
         UIView.animate(
             withDuration: 0.5) {
-            blackView.alpha = 1
-            
+            self.blackView.alpha = 1
         }
             print("Button tapped")
+    }
+    
+    @objc func handleDismiss() {
+        UIView.animate(
+            withDuration: 0.5) {
+            self.blackView.alpha = 0
+        }
         
     }
     
