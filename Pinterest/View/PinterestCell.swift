@@ -27,49 +27,16 @@ class PinterestCell: UICollectionViewCell {
         iv.tintColor = UIColor.lightGray
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moreImgViewAction)))
-        
-        
-        
-//        moreImgView.addTarget(self, action: #selector(moreImgViewAction), for: .touchUpInside)
-        
-        
+      
         return iv
-        
     }()
-    // show menu
-        let blackView = UIView()
+    
+    let settingsLauncher = SettingsLauncher()
     
     @objc func moreImgViewAction() {
-        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        
-        // dismiss blackview
-        blackView.addGestureRecognizer(UITapGestureRecognizer(
-            target: self,
-            action: #selector(handleDismiss)))
-        
-            // Add has a subview to viewController view
-        window?.addSubview(blackView)
-        blackView.frame = window!.frame
-        // this calls blackview to screen
-        blackView.alpha = 0
-        
-        // animate the black view onto screen
-        UIView.animate(
-            withDuration: 0.5) {
-            self.blackView.alpha = 1
-        }
-            print("Button tapped")
+        // show menu
+        settingsLauncher.showSettings()
     }
-    
-    @objc func handleDismiss() {
-        UIView.animate(
-            withDuration: 0.5) {
-            self.blackView.alpha = 0
-        }
-        
-    }
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
