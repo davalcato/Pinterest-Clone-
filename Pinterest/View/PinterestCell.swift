@@ -38,12 +38,22 @@ class PinterestCell: UICollectionViewCell {
     }()
     
     @objc func moreImgViewAction() {
+        
         // show menu
             let blackView = UIView()
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             // Add has a subview to viewController view
         window?.addSubview(blackView)
         blackView.frame = window!.frame
+        // this calls blackview to screen
+        blackView.alpha = 0
+        
+        // animate the black view onto screen
+        UIView.animate(
+            withDuration: 0.5) {
+            blackView.alpha = 1
+            
+        }
             print("Button tapped")
         
     }
