@@ -34,14 +34,12 @@ class SettingsLauncher: NSObject {
             window.addSubview(collectionView)
             
             // change location of popup to bottom
-            let height: CGFloat = 300
+            let height: CGFloat = 500
             let y = window.frame.height - height
-            
-            
             // frame of collectioView
             collectionView.frame = CGRect(
                 x: 0,
-                y: y,
+                y: window.frame.height,
                 width: window.frame.width,
                 height: height)
             
@@ -53,6 +51,14 @@ class SettingsLauncher: NSObject {
         UIView.animate(
             withDuration: 0.5) {
             self.blackView.alpha = 1
+            // setting the new frame of collectionView to animate
+            self.collectionView.frame = CGRect(
+                x: 0,
+                y: y,
+                width: self.collectionView.frame.width,
+                height: self.collectionView.frame.height)
+            
+            
             }
             print("Button tapped")
         }
