@@ -74,6 +74,14 @@ class SettingsLauncher: NSObject {
         UIView.animate(
             withDuration: 0.5) {
             self.blackView.alpha = 0
+            // this dismisses the collectionView back to the bottom
+            if let window = UIApplication.shared.windows.first {
+                self.collectionView.frame = CGRect(
+                    x: 0,
+                    y: window.frame.height,
+                    width: self.collectionView.frame.width,
+                    height: self.collectionView.frame.height)
+            }
         }
     }
     override init() {

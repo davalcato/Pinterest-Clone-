@@ -41,7 +41,6 @@ class MainTabBarController: UITabBarController, UIScrollViewDelegate, UITabBarCo
 //        button.setTitle("Get Permission", for: .normal)
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
-        
         setupViewController()
     }
     

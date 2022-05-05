@@ -252,7 +252,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             widthConstant: 0,
             heightConstant: 0)
         
-        
     // navBar into separate function
     func setupNavBar() {
         
