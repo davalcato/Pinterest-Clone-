@@ -8,10 +8,23 @@
 import UIKit
 
 class SettingCell: BaseCell {
+    
+    // adding name label to the cell
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Setting"
+        return label
+        
+    }()
+    
     override func setupViews() {
         super.setupViews()
+        // add name label here
+        addSubview(nameLabel)
         
-        backgroundColor = UIColor.blue
+        // call custom function
+        addConstraintsWithFormat(format: "H:|[v0]|", views: nameLabel)
+        addConstraintsWithFormat(format: "V:|[v0]|", views: nameLabel)
         
     }
 }

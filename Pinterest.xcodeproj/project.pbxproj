@@ -19,6 +19,7 @@
 		755F8C9D2725E60A00398ADD /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 755F8C9C2725E60A00398ADD /* Assets */; };
 		756BD03E282478E30016F0A8 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756BD03D282478E30016F0A8 /* SettingCell.swift */; };
 		756BD040282479FB0016F0A8 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756BD03F282479FB0016F0A8 /* VideoCell.swift */; };
+		756BD044282705820016F0A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756BD043282705820016F0A8 /* Extensions.swift */; };
 		75742384276EA08600C98DFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75742383276EA08600C98DFF /* Post.swift */; };
 		75742388276EA90E00C98DFF /* PinterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75742387276EA90E00C98DFF /* PinterestCell.swift */; };
 		75A1F60E2740546400E4170A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1F60D2740546300E4170A /* MainTabBarController.swift */; };
@@ -75,6 +76,7 @@
 		755F8C9C2725E60A00398ADD /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		756BD03D282478E30016F0A8 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		756BD03F282479FB0016F0A8 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		756BD043282705820016F0A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		75742383276EA08600C98DFF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		75742387276EA90E00C98DFF /* PinterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestCell.swift; sourceTree = "<group>"; };
 		758D57052790FBEE00557264 /* PinterestDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinterestDebug.entitlements; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		75595B3B2725C20000DBB009 = {
 			isa = PBXGroup;
 			children = (
+				75B5D463275C140000AA3148 /* Helpers */,
 				75595B462725C20100DBB009 /* Pinterest */,
 				75595B5D2725C20600DBB009 /* PinterestTests */,
 				75595B672725C20600DBB009 /* PinterestUITests */,
@@ -167,7 +170,6 @@
 				75742382276EA06000C98DFF /* Models */,
 				75742381276EA05A00C98DFF /* View */,
 				75742380276EA04900C98DFF /* Controller */,
-				75B5D463275C140000AA3148 /* Helpers */,
 				755F8C9C2725E60A00398ADD /* Assets */,
 				75742385276EA26200C98DFF /* Supporting  */,
 				75742386276EA7C900C98DFF /* Work */,
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				75B5D4692760172500AA3148 /* PinterestLayout.swift */,
+				756BD043282705820016F0A8 /* Extensions.swift */,
 				75742387276EA90E00C98DFF /* PinterestCell.swift */,
 				756BD03D282478E30016F0A8 /* SettingCell.swift */,
 				756BD03F282479FB0016F0A8 /* VideoCell.swift */,
@@ -548,6 +551,7 @@
 				75595B482725C20100DBB009 /* AppDelegate.swift in Sources */,
 				75D6288D27656F8400125509 /* CCZoomTransitionVCExtension.swift in Sources */,
 				756BD040282479FB0016F0A8 /* VideoCell.swift in Sources */,
+				756BD044282705820016F0A8 /* Extensions.swift in Sources */,
 				75A1F61027405A4300E4170A /* FeedViewController.swift in Sources */,
 				75B5D46A2760172600AA3148 /* PinterestLayout.swift in Sources */,
 				75A1F60E2740546400E4170A /* MainTabBarController.swift in Sources */,
