@@ -17,14 +17,30 @@ class SettingCell: BaseCell {
         
     }()
     
+    // add item view to the cells
+    let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        // set the image
+        imageView.image = UIImage(named: "settings")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+        
+    }()
+    
     override func setupViews() {
         super.setupViews()
         // add name label here
         addSubview(nameLabel)
+        // add icon image into cell
+        addSubview(iconImageView)
         
         // call custom function
-        addConstraintsWithFormat(format: "H:|[v0]|", views: nameLabel)
+        addConstraintsWithFormat(format: "H:|-8-[v0(30)]-8-[v1]|", views: iconImageView, nameLabel)
+        
         addConstraintsWithFormat(format: "V:|[v0]|", views: nameLabel)
+        
+        // establish the height of imageview cell
+        addConstraintsWithFormat(format: "V:[v0(30)]", views: iconImageView)
         
     }
 }
