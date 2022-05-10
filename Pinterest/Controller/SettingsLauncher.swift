@@ -100,6 +100,11 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         return CGSize(width: collectionView.frame.width, height: 50)
     }
     
+    // fix settings image icon spacing gap
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     override init() {
         super.init()
                 collectionView.dataSource = self
