@@ -42,6 +42,16 @@ class SettingCell: BaseCell {
         // establish the height of imageview cell
         addConstraintsWithFormat(format: "V:[v0(30)]", views: iconImageView)
         
+        // fixing the settings image icon
+        addConstraint(NSLayoutConstraint(
+            item: iconImageView,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: self,
+            attribute: .centerY,
+            multiplier: 1,
+            constant: 0))
+        
     }
 }
 
