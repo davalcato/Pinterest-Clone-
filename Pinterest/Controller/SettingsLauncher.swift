@@ -37,10 +37,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     let cellId = "cellId"
     
     let settings: [Setting] = {
-        return [Setting(name: "Settings", imageName: "settings")]
-//             Setting(name: "Terms & privacy policy", imageName: "privacy"),Setting(name: "Send Feedback",
-//            imageName: "feedback"), Setting(name: "Switch Account", imageName: "switch"), Setting(name: "Cancel",
-//                imageName: "cancel")]
+        return [Setting(name: "Settings", imageName: "settings"), Setting(name: "Terms & privacy policy", imageName: "privacy"), Setting(name: "Send Feedback", imageName: "feedback"), Setting(name: "Help", imageName: "help"), Setting(name: "Switch Account", imageName: "switch"), Setting(name: "Cancel", imageName: "cancel")]
     }()
     
     func showSettings() {
@@ -57,7 +54,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
             window.addSubview(collectionView)
             
             // change location of popup to bottom
-            let height: CGFloat = 500
+            let height: CGFloat = 320
             let y = window.frame.height - height
             // frame of collectioView
             collectionView.frame = CGRect(
@@ -109,11 +106,17 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return settings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        // down cast setting
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SettingCell
+        // tell the cell what the images need to be
+        let setting = settings[indexPath.item]
+        cell.setting = setting
+        
+        
         return cell
     }
     // extend the cells along the horizon axis
