@@ -20,7 +20,6 @@ class Setting: NSObject {
         self.imageName = imageName
     }
 }
-
 class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // show menu
     let blackView = UIView()
@@ -35,12 +34,15 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     }()
     // construct and array of cell rolls
     let cellId = "cellId"
+    // create viable
+    let cellHeight: CGFloat = 50
     
     let settings: [Setting] = {
         return [Setting(name: "Settings", imageName: "settings"), Setting(name: "Terms & privacy policy", imageName: "privacy"), Setting(name: "Send Feedback", imageName: "feedback"), Setting(name: "Help", imageName: "help"), Setting(name: "Switch Account", imageName: "switch"), Setting(name: "Cancel", imageName: "cancel")]
     }()
     
     func showSettings() {
+        // show menu
         if let window = UIApplication.shared.windows.first {
             
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -53,8 +55,8 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
             window.addSubview(blackView)
             window.addSubview(collectionView)
             
-            // change location of popup to bottom
-            let height: CGFloat = 320
+            // hard coded height turned dynamic by rolls height
+            let height: CGFloat = CGFloat(settings.count) * cellHeight
             let y = window.frame.height - height
             // frame of collectioView
             collectionView.frame = CGRect(
@@ -63,6 +65,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
                 width: window.frame.width,
                 height: height)
             
+            collectionView.isScrollEnabled = false
             
             blackView.frame = window.frame
             // this calls blackview to screen
@@ -121,7 +124,8 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     }
     // extend the cells along the horizon axis
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+        // roll height
+        return CGSize(width: collectionView.frame.width, height: cellHeight)
     }
     
     // fix settings image icon spacing gap
