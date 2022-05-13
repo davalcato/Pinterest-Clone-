@@ -12,10 +12,11 @@ class Setting: NSObject {
     // create variables
     let name: String
     let imageName: String
-    // property names
+    // initialize the property names
     init(name: String, imageName: String) {
         // name we pass in
         self.name = name
+        // imagename that is passed in
         self.imageName = imageName
     }
 }
@@ -32,8 +33,15 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         return cv
         
     }()
-    // create cellId
+    // construct and array of cell rolls
     let cellId = "cellId"
+    
+    let settings: [Setting] = {
+        return [Setting(name: "Settings", imageName: "settings")]
+//             Setting(name: "Terms & privacy policy", imageName: "privacy"),Setting(name: "Send Feedback",
+//            imageName: "feedback"), Setting(name: "Switch Account", imageName: "switch"), Setting(name: "Cancel",
+//                imageName: "cancel")]
+    }()
     
     func showSettings() {
         if let window = UIApplication.shared.windows.first {
