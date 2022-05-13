@@ -7,6 +7,19 @@
 
 import UIKit
 
+// matching the setting icons with the labels
+class Setting: NSObject {
+    // create variables
+    let name: String
+    let imageName: String
+    // property names
+    init(name: String, imageName: String) {
+        // name we pass in
+        self.name = name
+        self.imageName = imageName
+    }
+}
+
 class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // show menu
     let blackView = UIView()
