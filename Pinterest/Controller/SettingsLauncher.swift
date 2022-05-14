@@ -64,7 +64,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
                 y: window.frame.height,
                 width: window.frame.width,
                 height: height)
-            
+            // stop settings cell from scrolling 
             collectionView.isScrollEnabled = false
             
             blackView.frame = window.frame
