@@ -9,6 +9,16 @@ import UIKit
 
 class SettingCell: BaseCell {
     
+    // highlight roll cell in menu with override
+    override var isHighlighted: Bool {
+        didSet {
+            print(isHighlighted)
+            
+        }
+        
+    }
+    
+    
     var setting: Setting? {
         didSet {
             // call name label
