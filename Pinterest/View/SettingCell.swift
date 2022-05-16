@@ -14,6 +14,10 @@ class SettingCell: BaseCell {
         didSet {
             // set color otherwise completely white
             backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
+            
+            // change to text to be white when tapped
+            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+            
             print(isHighlighted)
             
         }
