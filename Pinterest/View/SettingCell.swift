@@ -12,6 +12,8 @@ class SettingCell: BaseCell {
     // highlight roll cell in menu with override
     override var isHighlighted: Bool {
         didSet {
+            // set color otherwise completely white
+            backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
             print(isHighlighted)
             
         }
