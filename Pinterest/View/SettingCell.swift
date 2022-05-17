@@ -18,21 +18,22 @@ class SettingCell: BaseCell {
             // change to text to be white when tapped
             nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
             
+            // change tint color of view on roll cell
+            iconImageView.tintColor = isHighlighted ? UIColor.white : UIColor.darkGray
+            
             print(isHighlighted)
             
         }
         
     }
-    
-    
     var setting: Setting? {
         didSet {
             // call name label
             nameLabel.text = setting?.name
-            
             if let imageName = setting?.imageName {
-                // set the images in the settings cell optional
+                // set the images in the settings cell optional - then change tint color
                 iconImageView.image = UIImage(named: imageName)
+                iconImageView.tintColor = UIColor.red
             }
         }
     }
@@ -80,9 +81,9 @@ class SettingCell: BaseCell {
             attribute: .centerY,
             multiplier: 1,
             constant: 0))
-        
     }
 }
+
 
 
 
