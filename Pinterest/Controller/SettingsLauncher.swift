@@ -132,6 +132,12 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    // tap to transition from cell collection to different page
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // get the settings
+        let setting = settings[indexPath.item]
+        print(setting.name)
+    }
     
     override init() {
         super.init()
