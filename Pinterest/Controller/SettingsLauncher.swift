@@ -135,17 +135,17 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     // tap to transition from cell collection to different page
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // get the settings
-//        let setting = settings[indexPath.item]
-//        print(setting.name)
+        let setting = settings[indexPath.item]
+        print(setting.name)
         
-        // animate with duration
+        // animate with completion block
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
             usingSpringWithDamping: 1,
             initialSpringVelocity: 1,
             options: .curveEaseOut) {
-            
+            // dismissal code
             self.blackView.alpha = 0
             // this dismisses the collectionView back to the bottom
             if let window = UIApplication.shared.windows.first {
@@ -155,7 +155,9 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
                     width: self.collectionView.frame.width,
                     height: self.collectionView.frame.height)
             }
+            
         } completion: { Bool in
+            // some code
             
         }
     }
