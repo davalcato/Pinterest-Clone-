@@ -9,6 +9,8 @@ import UIKit
 
 class PinterestCell: UICollectionViewCell {
     
+    weak var navigationController: UINavigationController?
+    
     // declare here
     let mainImgView: UIImageView = {
         let iv = UIImageView()
@@ -36,6 +38,10 @@ class PinterestCell: UICollectionViewCell {
     @objc func moreImgViewAction() {
         // show menu
         settingsLauncher.showSettings()
+        
+        // push a viewController onto the stack
+        let dummySettingsViewController = UIViewController()
+        navigationController?.pushViewController(dummySettingsViewController, animated: true)
     }
     
     override init(frame: CGRect) {

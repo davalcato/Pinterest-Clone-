@@ -119,7 +119,6 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         let setting = settings[indexPath.item]
         cell.setting = setting
         
-        
         return cell
     }
     // extend the cells along the horizon axis
@@ -137,15 +136,14 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         // get the settings
         let setting = settings[indexPath.item]
         print(setting.name)
-        
-        // animate with completion block
+        // animate with duration
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
             usingSpringWithDamping: 1,
             initialSpringVelocity: 1,
             options: .curveEaseOut) {
-            // dismissal code
+            
             self.blackView.alpha = 0
             // this dismisses the collectionView back to the bottom
             if let window = UIApplication.shared.windows.first {
@@ -157,7 +155,6 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
             }
             
         } completion: { Bool in
-            // some code
             
         }
     }
