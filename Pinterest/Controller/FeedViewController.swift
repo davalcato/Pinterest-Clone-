@@ -142,9 +142,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         tf.leftView = leftView
         tf.leftViewMode = .always
         
-        
         return tf
-        
     }()
     
     lazy var rightBtn: UIButton = {
@@ -265,7 +263,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         navBar.addSubview(chatBtn)
         navBar.addSubview(rightBtn)
         
-        
         rightBtn.constraint(
             top: nil,
             left: navBar.leftAnchor,
@@ -278,7 +275,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             widthConstant: 25,
             heightConstant: 25)
         rightBtn.centerYAnchor.constraint(equalTo: navBar.centerYAnchor).isActive = true
-        
         
         chatBtn.constraint(
             top: nil,
@@ -304,9 +300,7 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
             rightConstant: 5,
             widthConstant: 0,
             heightConstant: 0)
-                
         }
-                    
 //    func locationServicesNeededState() {
 //        self.statusLabel.text
 //
@@ -330,8 +324,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
         locationServices.requestAlwaysAuthorization()
         
     }
-    
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // Take up the entire view of phone
@@ -363,7 +355,6 @@ class FeedViewController: UIViewController, UISearchResultsUpdating, UITextField
      default:
          break
      }
-
  }
     func setUpCamera() {
         let session = AVCaptureSession()
@@ -476,7 +467,6 @@ extension FeedViewController: AVCapturePhotoCaptureDelegate {
     }
     
 }
-
 extension FeedViewController: CLLocationManagerDelegate {
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

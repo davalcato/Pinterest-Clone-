@@ -36,13 +36,27 @@ class PinterestCell: UICollectionViewCell {
     let settingsLauncher = SettingsLauncher()
     
     @objc func moreImgViewAction() {
-        // show menu
+        //show menu
         settingsLauncher.showSettings()
         
-        // push a viewController onto the stack
-        let dummySettingsViewController = UIViewController()
-        navigationController?.pushViewController(dummySettingsViewController, animated: true)
     }
+    
+    // make self non nil
+//    lazy var settingsLauncher: SettingsLauncher = {
+//        let dummySettingsViewController = UIViewController()
+//        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+//    }
+    
+//    func showControllerForSettings() {
+//        // push a viewController onto the stack
+//        let dummySettingsViewController = UIViewController()
+//        dummySettingsViewController.view.backgroundColor = UIColor.white
+////        dummySettingsViewController.navigationItem.title = setting.name.rawValue
+//        navigationController?.navigationBar.tintColor = UIColor.white
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        
+//        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,6 +97,7 @@ class PinterestCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
 
 

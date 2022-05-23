@@ -41,6 +41,9 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         return [Setting(name: "Settings", imageName: "settings"), Setting(name: "Terms & privacy policy", imageName: "privacy"), Setting(name: "Send Feedback", imageName: "feedback"), Setting(name: "Help", imageName: "help"), Setting(name: "Switch Account", imageName: "switch"), Setting(name: "Cancel", imageName: "cancel")]
     }()
     
+    // dismiss menu
+    var pinterestCell: PinterestCell?
+    
     func showSettings() {
         // show menu
         if let window = UIApplication.shared.windows.first {
@@ -156,6 +159,12 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
             
         } completion: { Bool in
             
+            let setting = self.settings[indexPath.item]
+            if setting.name != "Cancel" {
+                // presents the new viewController on dismissal
+//                self.pinterestCell?.showControllerForSettings()
+                
+            }
         }
     }
     
