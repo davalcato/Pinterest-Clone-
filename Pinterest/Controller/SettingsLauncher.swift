@@ -45,7 +45,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     var pinterestCell: PinterestCell?
     
     func showSettings() {
-        // show menu
+        // presents entire menu onto screen 
         if let window = UIApplication.shared.windows.first {
             
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)

@@ -39,9 +39,12 @@ class PinterestCell: UICollectionViewCell {
         //show menu
         settingsLauncher.showSettings()
         
+        let dummySettingsViewController = UIViewController()
+        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+        
     }
+    // push a viewController onto stack
     
-    // make self non nil
 //    lazy var settingsLauncher: SettingsLauncher = {
 //        let dummySettingsViewController = UIViewController()
 //        navigationController?.pushViewController(dummySettingsViewController, animated: true)
