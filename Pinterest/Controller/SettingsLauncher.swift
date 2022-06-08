@@ -45,7 +45,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     var pinterestCell: PinterestCell?
     
     func showSettings() {
-        // presents entire menu onto screen 
+        // presents entire menu
         if let window = UIApplication.shared.windows.first {
             
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -162,7 +162,7 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
             let setting = self.settings[indexPath.item]
             if setting.name != "Cancel" {
                 // presents the new viewController on dismissal
-//                self.pinterestCell?.showControllerForSettings()
+                self.pinterestCell?.showControllerForSettings()
                 
             }
         }

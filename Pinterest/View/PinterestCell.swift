@@ -37,29 +37,31 @@ class PinterestCell: UICollectionViewCell {
     
     @objc func moreImgViewAction() {
         //show menu
+//        showControllerForSettings()
+        settingsLauncher.pinterestCell = self
         settingsLauncher.showSettings()
         
-        let dummySettingsViewController = UIViewController()
-        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+//        let MenuViewController = UIViewController()
+        
+        // goes to next viewController
+//        let menuViewController = UINavigationController(rootViewController: MenuViewController())
+//        window?.rootViewController = menuViewController
         
     }
-    // push a viewController onto stack
-    
-//    lazy var settingsLauncher: SettingsLauncher = {
-//        let dummySettingsViewController = UIViewController()
-//        navigationController?.pushViewController(dummySettingsViewController, animated: true)
-//    }
-    
-//    func showControllerForSettings() {
-//        // push a viewController onto the stack
-//        let dummySettingsViewController = UIViewController()
-//        dummySettingsViewController.view.backgroundColor = UIColor.white
-////        dummySettingsViewController.navigationItem.title = setting.name.rawValue
-//        navigationController?.navigationBar.tintColor = UIColor.white
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        
-//        navigationController?.pushViewController(dummySettingsViewController, animated: true)
-//    }
+    class MenuViewController: UIViewController {
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            view.backgroundColor = .systemRed
+            title = "Welcome"
+        }
+    }
+    // view controller
+    func showControllerForSettings() {
+        // push a viewController onto the stack
+        let menuViewController = UINavigationController(rootViewController: MenuViewController())
+        window?.rootViewController = menuViewController
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
