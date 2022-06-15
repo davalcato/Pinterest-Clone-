@@ -136,9 +136,11 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     }
     // tap to transition from cell collection to different page
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         // get the settings
-        let setting = settings[indexPath.item]
-        print(setting.name)
+//        let setting = settings[indexPath.item]
+//        print(setting.name)
+        
         // animate with duration
         UIView.animate(
             withDuration: 0.5,
@@ -158,13 +160,13 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
             }
             
         } completion: { Bool in
-            
+            // pass the setting variable to showControllerForSetting
             let setting = self.settings[indexPath.item]
-            if setting.name != "Cancel" {
-                // presents the new viewController on dismissal
-                self.pinterestCell?.showControllerForSettings()
-                
-            }
+//            if setting.name != "Cancel" {
+//                // presents the new viewController on dismissal
+            self.pinterestCell?.showControllerForSetting(setting: setting)
+//
+//            }
         }
     }
     

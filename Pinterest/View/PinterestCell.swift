@@ -32,35 +32,36 @@ class PinterestCell: UICollectionViewCell {
       
         return iv
     }()
-    
-    let settingsLauncher = SettingsLauncher()
+    // not executing this code everytime a class is instantiated
+    lazy var settingsLauncher: SettingsLauncher = {
+        let launcher = SettingsLauncher()
+        launcher.pinterestCell = self
+        return launcher
+    }()
     
     @objc func moreImgViewAction() {
         //show menu
-//        showControllerForSettings()
-        settingsLauncher.pinterestCell = self
         settingsLauncher.showSettings()
-        
-//        let MenuViewController = UIViewController()
-        
-        // goes to next viewController
-//        let menuViewController = UINavigationController(rootViewController: MenuViewController())
-//        window?.rootViewController = menuViewController
         
     }
     class MenuViewController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
             view.backgroundColor = .systemRed
             title = "Welcome"
         }
     }
     // view controller
-    func showControllerForSettings() {
+    func showControllerForSetting(setting: Setting) {
+//        menuViewController?.navigationItem.title = setting.name
         // push a viewController onto the stack
+        let navigationController = UINavigationController()
         let menuViewController = UINavigationController(rootViewController: MenuViewController())
-        window?.rootViewController = menuViewController
+        navigationController.navigationItem.title = setting.name
+        navigationController.navigationBar.tintColor = UIColor.white
+        window?.rootViewController = navigationController
     }
     
     override init(frame: CGRect) {
@@ -100,6 +101,12 @@ class PinterestCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UINavigationController {
+    var rootViewController : UIViewController? {
+        return self.viewControllers.first
     }
 }
 
