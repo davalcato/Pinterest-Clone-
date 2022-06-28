@@ -41,6 +41,7 @@ class PinterestCell: UICollectionViewCell {
     
     @objc func moreImgViewAction() {
         //show menu
+        settingsLauncher.pinterestCell = self
         settingsLauncher.showSettings()
         
     }
@@ -50,18 +51,30 @@ class PinterestCell: UICollectionViewCell {
             super.viewDidLoad()
             
             view.backgroundColor = .systemRed
+            navigationController?.pushViewController(MenuViewController(), animated: true)
             title = "Welcome"
         }
     }
-    // view controller
+    // show everytime user tap on item in menu
     func showControllerForSetting(setting: Setting) {
+        
 //        menuViewController?.navigationItem.title = setting.name
         // push a viewController onto the stack
         let navigationController = UINavigationController()
-        let menuViewController = UINavigationController(rootViewController: MenuViewController())
         navigationController.navigationItem.title = setting.name
         navigationController.navigationBar.tintColor = UIColor.white
-        window?.rootViewController = navigationController
+        let menuViewController = UINavigationController(rootViewController: MenuViewController())
+        
+        
+        
+//        let dummySettingsViewController = UIViewController()
+//        navigationController?.navigationItem.title = setting.name
+//        navigationController?.navigationBar.tintColor = UIColor.white
+//        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+//        self.navigationController?.navigationItem.leftBarButtonItem = nil
+        
+//        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        window?.rootViewController = menuViewController
     }
     
     override init(frame: CGRect) {
@@ -109,6 +122,7 @@ extension UINavigationController {
         return self.viewControllers.first
     }
 }
+
 
 
 
