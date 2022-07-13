@@ -96,9 +96,15 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    @objc func handleDismiss() {
+    @objc func handleDismiss(setting: Setting) {
+        // animate with duration
         UIView.animate(
-            withDuration: 0.5) {
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut) {
+            
             self.blackView.alpha = 0
             // this dismisses the collectionView back to the bottom
             if let window = UIApplication.shared.windows.first {
@@ -107,6 +113,14 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
                     y: window.frame.height,
                     width: self.collectionView.frame.width,
                     height: self.collectionView.frame.height)
+            }
+            
+        } completion: { Bool in
+            // pass the setting variable to showControllerForSetting
+            
+            if setting.name != "Cancel" {
+//                // presents the new viewController on dismissal
+            self.pinterestCell?.showControllerForSetting(setting: setting)
             }
         }
     }
@@ -137,37 +151,16 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
     // tap to transition from cell collection to different page
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
+        let setting = self.settings[indexPath.item]
+        // handledismiss code
+        handleDismiss(setting: setting)
+        
         // get the settings
 //        let setting = settings[indexPath.item]
 //        print(setting.name)
         
-        // animate with duration
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut) {
-            
-            self.blackView.alpha = 0
-            // this dismisses the collectionView back to the bottom
-            if let window = UIApplication.shared.windows.first {
-                self.collectionView.frame = CGRect(
-                    x: 0,
-                    y: window.frame.height,
-                    width: self.collectionView.frame.width,
-                    height: self.collectionView.frame.height)
-            }
-            
-        } completion: { Bool in
-            // pass the setting variable to showControllerForSetting
-            let setting = self.settings[indexPath.item]
-            if setting.name != "Cancel" {
-//                // presents the new viewController on dismissal
-            self.pinterestCell?.showControllerForSetting(setting: setting)
-//
-            }
-        }
+       
     }
     
     override init() {
