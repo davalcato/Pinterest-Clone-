@@ -162,11 +162,11 @@ class SettingsLauncher: NSObject, UICollectionViewDelegate, UICollectionViewData
         } completion: { Bool in
             // pass the setting variable to showControllerForSetting
             let setting = self.settings[indexPath.item]
-//            if setting.name != "Cancel" {
+            if setting.name != "Cancel" {
 //                // presents the new viewController on dismissal
             self.pinterestCell?.showControllerForSetting(setting: setting)
 //
-//            }
+            }
         }
     }
     

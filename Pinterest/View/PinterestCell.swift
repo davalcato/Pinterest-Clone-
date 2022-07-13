@@ -50,9 +50,11 @@ class PinterestCell: UICollectionViewCell {
         override func viewDidLoad() {
             super.viewDidLoad()
             
+            self.navigationController?.navigationBar.shadowImage = UIImage()
             view.backgroundColor = .systemRed
             navigationController?.pushViewController(MenuViewController(), animated: true)
             title = "Welcome"
+            
         }
     }
     // show everytime user tap on item in menu
@@ -68,10 +70,14 @@ class PinterestCell: UICollectionViewCell {
         
         
 //        let dummySettingsViewController = UIViewController()
-//        navigationController?.navigationItem.title = setting.name
-//        navigationController?.navigationBar.tintColor = UIColor.white
-//        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+//
+//        dummySettingsViewController.view.backgroundColor = .white
 //        self.navigationController?.navigationItem.leftBarButtonItem = nil
+//        navigationController?.navigationItem.title = setting.name
+//        navigationController?.navigationBar.barTintColor = .red
+//        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+        
+    
         
 //        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         window?.rootViewController = menuViewController
@@ -122,6 +128,11 @@ extension UINavigationController {
         return self.viewControllers.first
     }
 }
+
+
+
+
+
 
 
 
